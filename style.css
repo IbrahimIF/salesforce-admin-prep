@@ -114,7 +114,7 @@ body { font-family: var(--font); background: var(--sf-bg); color: var(--text); l
 .btn-secondary:hover { background: rgba(255,255,255,0.25); }
 
 /* ── TOPICS ─────────────────────────────────────────────── */
-.topics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 18px; }
+.topics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 18px; align-items: start; }
 
 .topic-card {
   background: var(--card-bg);
@@ -160,6 +160,12 @@ body { font-family: var(--font); background: var(--sf-bg); color: var(--text); l
 .topic-card.open .topic-body { display: block; }
 
 .topic-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+/* Last topic card spans full width when alone in its row */
+.topics-grid .topic-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
 @media (max-width: 520px) { .topic-grid-2 { grid-template-columns: 1fr; } }
 
 .topic-body h4 {
