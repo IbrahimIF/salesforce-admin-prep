@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Platform Administrator Exam Prep | ADM-201</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="Assets/trailhead.png">
+  <link rel="icon" href="Assets/ADM-badge.png">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <img src="Assets/salesforce.png" alt="Salesforce" class="brand-logo">
+        <span class="brand-text">Admin Exam Prep</span>
+        <span class="brand-text">Platform Admin Exam Prep</span>
+      </div>
+      <div class="nav-links">
+        <a href="#topics">Topics</a>
+        <a href="#flashcards">Flashcards</a>
+        <a href="#cheatsheet">Cheat Sheet</a>
+        <a href="#resources">Resources</a>
+      </div>
+      <button class="nav-hamburger" id="nav-hamburger" onclick="toggleNav()" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-content">
+      <div class="hero-badge"><img src="Assets/ADM-badge.png" alt="Platform Administrator Badge" class="hero-badge-img"> Salesforce Certified Administrator</div>
+      <h1>Platform Administrator Exam Prep</h1>
+      <p class="hero-sub">Study notes, flashcards, and quick reference for the Salesforce Platform Administrator exam (ADM-201).</p>
+      <div class="exam-stats">
+        <div class="stat-card">
+          <div class="stat-num">60</div>
+          <div class="stat-label">Questions</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">5</div>
+          <div class="stat-label">Unscored</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num stat-num--sm">1h 45m</div>
+          <div class="stat-label">Duration</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">68%</div>
+          <div class="stat-label">Pass Score</div>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <a href="#topics" class="btn btn-primary">Start Studying</a>
+        <a href="#flashcards" class="btn btn-secondary">Practice Flashcards</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- TOPICS GRID -->
+  <section id="topics" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Exam Domains</h2>
+        <p>Expand a topic to view the full study notes</p>
+      </div>
+      <div class="topics-grid">
+
+        <div class="topic-card" onclick="toggleTopic('config')">
+          <div class="topic-header">
+            <div class="topic-icon"><img src="Assets/trailhead.png" alt=""></div>
+            <div class="topic-info">
+              <h3>Configuration &amp; Setup</h3>
+              <div class="topic-meta">
+                <span class="weight-badge">15%</span>
+                <span class="trail-link"><a href="https://trailhead.salesforce.com/en/content/learn/modules/starting_force_com" target="_blank" onclick="event.stopPropagation()">Trailhead ↗</a></span>
+              </div>
+            </div>
+            <span class="chevron" id="chevron-config">▼</span>
+          </div>
+          <div class="topic-body" id="body-config">
+            <div class="topic-grid-2">
+              <div>
+                <h4>Company Information</h4>
+                <ul>
+                  <li>Org ID — unique 15-char identifier, needed for support</li>
+                  <li>Default Time Zone, Language, Currency</li>
+                  <li>Data &amp; File Storage limits</li>
+                  <li>License counts and API usage</li>
+                </ul>
+                <h4>Licenses</h4>
+                <ul>
+                  <li><strong>User License</strong> — baseline features, every user must have one</li>
+                  <li><strong>Feature License</strong> — grants additional features (e.g. Marketing User)</li>
+                  <li><strong>Permission Set License</strong> — gradually grants features not in user license</li>
+                </ul>
+                <h4>Currency</h4>
+                <ul>
+                  <li>Multi-Currency must be enabled; <span class="warn">CANNOT be reversed</span></li>
+                  <li>Advanced Currency Management = dated exchange rates for historical accuracy</li>
+                </ul>
+                <h4>Fiscal Year</h4>
+                <ul>
+                  <li>Standard (Gregorian) or Custom (non-standard)</li>
+                  <li><span class="warn">Custom Fiscal Year cannot be reverted to Standard</span></li>
+                </ul>
+              </div>
+              <div>
+                <h4>Sandboxes</h4>
+                <table class="mini-table">
+                  <tr><th>Type</th><th>Storage</th><th>Data</th><th>Refresh</th></tr>
+                  <tr><td>Developer</td><td>200MB</td><td>Metadata</td><td>1 day</td></tr>
+                  <tr><td>Developer Pro</td><td>1GB</td><td>Metadata</td><td>1 day</td></tr>
+                  <tr><td>Partial Copy</td><td>5GB</td><td>Meta+Data</td><td>5 days</td></tr>
+                  <tr><td>Full Copy</td><td>=Prod</td><td>All</td><td>29 days</td></tr>
+                </table>
+                <h4>User Management</h4>
+                <ul>
+                  <li>Users can <strong>never be deleted</strong> — deactivate instead</li>
+                  <li><strong>Freeze</strong> = blocks login, keeps license | <strong>Deactivate</strong> = blocks login + frees license</li>
+                  <li>Login History: 20,000 records, last 6 months</li>
+                  <li>Trusted IP Ranges bypass Device Activation prompts</li>
+                </ul>
+                <h4>Security Health Check</h4>
+                <ul>
+                  <li>Setup → Security → Health Check</li>
+                  <li>90–100% Excellent | 80–89% Good | Below 70% Poor</li>
+                </ul>
+              </div>
+            </div>
+          <div class="topic-images">
+            <img src="Assets/content-images/Pasted image 20251028150603.png" alt="" class="topic-img" loading="lazy">
+            <img src="Assets/content-images/Pasted image 20251029143231.png" alt="" class="topic-img" loading="lazy">
+            <img src="Assets/content-images/Pasted image 20251207152559.png" alt="" class="topic-img" loading="lazy">
+            <img src="Assets/content-images/Pasted image 20251207211611.png" alt="" class="topic-img" loading="lazy">
+          </div>
+          </div>
+        </div>
+
+        <div class="topic-card" onclick="toggleTopic('objmgr')">
+          <div class="topic-header">
+            <div class="topic-icon"><img src="Assets/trailhead.png" alt=""></div>
+            <div class="topic-info">
+              <h3>Object Manager &amp; Lightning App Builder</h3>
+              <div class="topic-meta">
+                <span class="weight-badge">15%</span>
+                <span class="trail-link"><a href="https://trailhead.salesforce.com/en/content/learn/modules/data_modeling" target="_blank" onclick="event.stopPropagation()">Trailhead ↗</a></span>
+              </div>
+            </div>
+            <span class="chevron" id="chevron-objmgr">▼</span>
+          </div>
+          <div class="topic-body" id="body-objmgr">
+            <div class="topic-grid-2">
+              <div>
+                <h4>Relationship Types</h4>
+                <table class="mini-table">
+                  <tr><th></th><th>Lookup</th><th>Master-Detail</th></tr>
+                  <tr><td>Child without parent?</td><td>✅ Yes</td><td>❌ No</td></tr>
+                  <tr><td>Cascading delete?</td><td>❌ No</td><td>✅ Yes</td></tr>
+                  <tr><td>Own sharing rules?</td><td>✅ Yes</td><td>❌ Inherits</td></tr>
+                  <tr><td>Roll-Up Summary?</td><td>❌ No</td><td>✅ Yes</td></tr>
+                </table>
+                <h4>Special Relationships</h4>
+                <ul>
+                  <li><strong>Hierarchical</strong> — Only on User object (e.g. Manager field)</li>
+                  <li><strong>Self Relationship</strong> — Lookup to same object (e.g. Parent Account)</li>
+                  <li><strong>Many-to-Many</strong> — Junction Object with two Master-Details</li>
+                </ul>
+                <h4>Roll-Up Summary</h4>
+                <ul>
+                  <li>Created on Master (Parent), aggregates Detail (Child) records</li>
+                  <li>Functions: <strong>COUNT, SUM, MIN, MAX</strong></li>
+                  <li>Master-Detail relationship REQUIRED</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Record Types</h4>
+                <ul>
+                  <li>Controls: picklist values, page layouts, business processes</li>
+                  <li>Assigned to Profiles (not roles)</li>
+                  <li><span class="warn">Does NOT affect sharing settings</span></li>
+                </ul>
+                <h4>Business Processes (LOCS)</h4>
+                <ul>
+                  <li><strong>Sales Process</strong> → Opportunity (Stage)</li>
+                  <li><strong>Lead Process</strong> → Lead (Status)</li>
+                  <li><strong>Support Process</strong> → Case (Status)</li>
+                  <li><strong>Solution Process</strong> → Solution (Status)</li>
+                </ul>
+                <h4>Path</h4>
+                <ul>
+                  <li>Visual stage guidance bar — Lightning only</li>
+                  <li>Based on any picklist field</li>
+                  <li>Must be added to page via Lightning App Builder</li>
+                </ul>
+                <h4>Picklists</h4>
+                <ul>
+                  <li><strong>Global Value Sets</strong> — defined once, reused everywhere</li>
+                  <li>Common/Reusable Picklists do NOT exist</li>
+                  <li>Master Picklist = used with Record Types only</li>
+                </ul>
+              </div>
+            </div>
+          <div class="topic-images">
+            <img src="Assets/content-images/Pasted image 20251031103547.png" alt="" class="topic-img" loading="lazy">
+            <img src="Assets/content-images/Pasted image 20251123103506.png" alt="" class="topic-img" loading="lazy">
+            <img src="Assets/content-images/Pasted image 20251123110303.png" alt="" class="topic-img" loading="lazy">
+            <img src="Assets/content-images/Pasted image 20251117212533.png" alt="" class="topic-img" loading="lazy">
+          </div>
+          </div>
+        </div>
+
+        <div class="topic-card" onclick="toggleTopic('automation')">
+          <div class="topic-header">
+            <div class="topic-icon"><img src="Assets/trailhead.png" alt=""></div>
+            <div class="topic-info">
+              <h3>Automation</h3>
+              <div class="topic-meta">
+                <span class="weight-badge">15%</span>
+                <span class="trail-link"><a href="https://trailhead.salesforce.com/en/content/learn/modules/flow-basics" target="_blank" onclick="event.stopPropagation()">Trailhead ↗</a></span>
+              </div>
+            </div>
+            <span class="chevron" id="chevron-automation">▼</span>
+          </div>
+          <div class="topic-body" id="body-automation">
+            <div class="topic-grid-2">
+              <div>
+                <h4>Order of Execution</h4>
+                <div class="execution-chain">
+                  <div class="exec-step">Validation Rules</div>
+                  <div class="exec-arrow">↓</div>
+                  <div class="exec-step">Duplicate Rules</div>
+                  <div class="exec-arrow">↓</div>
+                  <div class="exec-step">Before-Save Flow</div>
+                  <div class="exec-arrow">↓</div>
+                  <div class="exec-step">After-Save Flow</div>
+                  <div class="exec-arrow">↓</div>
+                  <div class="exec-step">Assignment Rules</div>
+                  <div class="exec-arrow">↓</div>
+                  <div class="exec-step">Auto-Response Rules</div>
+                  <div class="exec-arrow">↓</div>
+                  <div class="exec-step">Workflow Rules</div>
+                  <div class="exec-arrow">↓</div>
+                  <div class="exec-step">Escalation Rules</div>
+                </div>
+              </div>
+              <div>
+                <h4>Flow Types</h4>
+                <ul>
+                  <li><strong>Screen Flow</strong> — UI for data entry (uses Screen element)</li>
+                  <li><strong>Record-Triggered</strong> — Runs on create/update/delete</li>
+                  <li><strong>Schedule-Triggered</strong> — Runs at a set date/time</li>
+                  <li><strong>Auto-Launched</strong> — Called from other automation</li>
+                </ul>
+                <h4>Key Flow Facts</h4>
+                <ul>
+                  <li><strong>Screen</strong> element = collects user input (has UI)</li>
+                  <li><strong>Assignment</strong> element = sets variables (no UI)</li>
+                  <li>Activating a flow does NOT retroactively process existing records</li>
+                  <li>Workflow Rules and Process Builder reached end-of-support in December 2025 — Flow is the only supported automation tool</li>
+                </ul>
+                <h4>Auto-Response Rules</h4>
+                <ul>
+                  <li>Emails the <strong>CUSTOMER</strong>, not the record owner</li>
+                  <li>For internal emails, use <strong>Flow</strong></li>
+                </ul>
+                <h4>Escalation Rules</h4>
+                <ul>
+                  <li>Can reassign or notify up to 5 email addresses</li>
+                  <li>Time calculated using <strong>Business Hours</strong></li>
+                </ul>
+              </div>
+            </div>
+          <div class="topic-images">
+            <img src="Assets/content-images/Pasted image 20251226171439.png" alt="" class="topic-img" loading="lazy">
+            <img src="Assets/content-images/Pasted image 20251230002205.png" alt="" class="topic-img" loading="lazy">
+          </div>
+          </div>
+        </div>
+
+        <div class="topic-card" onclick="toggleTopic('data')">
+          <div class="topic-header">
+            <div class="topic-icon"><img src="Assets/trailhead.png" alt=""></div>
+            <div class="topic-info">
+              <h3>Data &amp; Analytics Management</h3>
+              <div class="topic-meta">
+                <span class="weight-badge high">17%</span>
+                <span class="trail-link"><a href="https://trailhead.salesforce.com/en/content/learn/modules/lex_implementation_reports_dashboards" target="_blank" onclick="event.stopPropagation()">Trailhead ↗</a></span>
+              </div>
+            </div>
+            <span class="chevron" id="chevron-data">▼</span>
+          </div>
+          <div class="topic-body" id="body-data">
+            <div class="topic-grid-2">
+              <div>
+                <h4>Data Import Wizard vs Data Loader</h4>
+                <table class="mini-table">
+                  <tr><th></th><th>Import Wizard</th><th>Data Loader</th></tr>
+                  <tr><td>Max records</td><td>50,000</td><td>150 million</td></tr>
+                  <tr><td>Users</td><td>Admins + End Users</td><td>Admins only</td></tr>
+                  <tr><td>Access</td><td>Setup (browser)</td><td>Desktop app</td></tr>
+                  <tr><td>Hard Delete</td><td>❌ No</td><td>✅ Yes</td></tr>
+                  <tr><td>All objects</td><td>❌ Limited</td><td>✅ Yes</td></tr>
+                </table>
+                <h4>Key Import Facts</h4>
+                <ul>
+                  <li><strong>Upsert</strong> = Update if match found, Insert if not</li>
+                  <li><strong>Hard Delete</strong> = bypasses Recycle Bin (requires 'Use Bulk API')</li>
+                  <li>External ID field type: Text, Number, or Email only</li>
+                  <li>Recycle Bin auto-deletes after <strong>15 days</strong></li>
+                </ul>
+              </div>
+              <div>
+                <h4>Report Formats</h4>
+                <ul>
+                  <li><strong>Tabular</strong> — No groupings, simple list</li>
+                  <li><strong>Summary</strong> — Row groupings, subtotals</li>
+                  <li><strong>Matrix</strong> — Row AND column groupings</li>
+                  <li><strong>Joined</strong> — Multiple blocks, different objects</li>
+                </ul>
+                <p class="note">Formats adapt automatically — not manually selected</p>
+                <h4>Report Tools</h4>
+                <ul>
+                  <li><strong>Bucket Fields</strong> — Group values. Max 5 per report, 20 buckets each</li>
+                  <li><strong>Cross Filter</strong> — Records WITH or WITHOUT child records</li>
+                  <li><strong>Row-Level Formula</strong> — Only 1 per report</li>
+                  <li><strong>Conditional Highlighting</strong> — Colour-codes summarised values</li>
+                </ul>
+                <h4>Dashboards</h4>
+                <ul>
+                  <li><strong>Running User</strong> — Whose security context is used for data display</li>
+                  <li>Refresh: Manual, Daily, Weekly, or Monthly</li>
+                  <li>Joined Reports always export as <strong>.xlsx</strong></li>
+                </ul>
+              </div>
+            </div>
+          <div class="topic-images">
+            <img src="Assets/content-images/Pasted image 20251122185718.png" alt="" class="topic-img" loading="lazy">
+            <img src="Assets/content-images/Pasted image 20251123185053.png" alt="" class="topic-img" loading="lazy">
+          </div>
+          </div>
+        </div>
+
+        <div class="topic-card" onclick="toggleTopic('security')">
+          <div class="topic-header">
+            <div class="topic-icon"><img src="Assets/trailhead.png" alt=""></div>
+            <div class="topic-info">
+              <h3>Security &amp; Sharing Model</h3>
+              <div class="topic-meta">
+                <span class="weight-badge">Cross-domain</span>
+                <span class="trail-link"><a href="https://trailhead.salesforce.com/en/content/learn/modules/data_security" target="_blank" onclick="event.stopPropagation()">Trailhead ↗</a></span>
+              </div>
+            </div>
+            <span class="chevron" id="chevron-security">▼</span>
+          </div>
+          <div class="topic-body" id="body-security">
+            <div class="topic-grid-2">
+              <div>
+                <h4>Security Layer Hierarchy</h4>
+                <div class="security-layers">
+                  <div class="layer layer-1">Profile / Permission Set<br><small>Object-Level: Can they see the object at all?</small></div>
+                  <div class="layer layer-2">OWD (Org-Wide Default)<br><small>Record-Level Baseline: Most restrictive setting</small></div>
+                  <div class="layer layer-3">Role Hierarchy<br><small>Vertical: Users see records of users below them</small></div>
+                  <div class="layer layer-4">Sharing Rules<br><small>Horizontal: Exceptions to OWD for groups</small></div>
+                  <div class="layer layer-5">Manual Sharing / Teams<br><small>Individual record exceptions</small></div>
+                </div>
+              </div>
+              <div>
+                <h4>OWD Settings</h4>
+                <ul>
+                  <li><strong>Private</strong> — Users see only records they own</li>
+                  <li><strong>Public Read Only</strong> — All can see, only owners can edit</li>
+                  <li><strong>Public Read/Write</strong> — All can see and edit</li>
+                  <li><span class="warn">Sharing Rules can NEVER be more restrictive than OWD</span></li>
+                </ul>
+                <h4>Public Groups Can Include</h4>
+                <ul>
+                  <li>Can include: Users, Roles, Territories, Other Public Groups</li>
+                  <li>Cannot include: Profiles, Permission Sets</li>
+                </ul>
+                <h4>Key Access Principles</h4>
+                <ul>
+                  <li>Profile = object access (CAN they see Accounts?)</li>
+                  <li>OWD + Role Hierarchy = record access (WHICH accounts?)</li>
+                  <li>FLS controls field-level visibility and editability</li>
+                  <li>Record Types do <span class="warn">NOT</span> affect sharing</li>
+                </ul>
+              </div>
+            </div>
+          <div class="topic-images">
+            <img src="Assets/content-images/Pasted image 20251229165048.png" alt="" class="topic-img" loading="lazy">
+            <img src="Assets/content-images/Pasted image 20251125131338.png" alt="" class="topic-img" loading="lazy">
+          </div>
+          </div>
+        </div>
+
+        <div class="topic-card" onclick="toggleTopic('sales')">
+          <div class="topic-header">
+            <div class="topic-icon"><img src="Assets/trailhead.png" alt=""></div>
+            <div class="topic-info">
+              <h3>Sales &amp; Marketing Applications</h3>
+              <div class="topic-meta">
+                <span class="weight-badge">10%</span>
+                <span class="trail-link"><a href="https://trailhead.salesforce.com/en/content/learn/modules/leads_and_opportunities_lightning_experience" target="_blank" onclick="event.stopPropagation()">Trailhead ↗</a></span>
+              </div>
+            </div>
+            <span class="chevron" id="chevron-sales">▼</span>
+          </div>
+          <div class="topic-body" id="body-sales">
+            <div class="topic-grid-2">
+              <div>
+                <h4>Lead Conversion Creates:</h4>
+                <ul>
+                  <li><strong>Account</strong> (new or match existing)</li>
+                  <li><strong>Contact</strong> (new or match existing)</li>
+                  <li><strong>Opportunity</strong> (optional — can be skipped)</li>
+                </ul>
+                <p class="note">Opportunity name is auto-generated. Owner can be selected before conversion.</p>
+                <h4>Lead Management</h4>
+                <ul>
+                  <li><strong>Web-to-Lead</strong> — HTML form captures leads from website. Validation rules run first.</li>
+                  <li><strong>Assignment Rules</strong> — Auto-assign leads to users/queues</li>
+                  <li><strong>Auto-Response Rules</strong> — Emails the lead/customer, not the owner</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Campaigns</h4>
+                <ul>
+                  <li>Track marketing efforts and ROI</li>
+                  <li>Support parent/child hierarchies</li>
+                  <li>Campaign Members are Contacts or Leads added to a campaign</li>
+                </ul>
+                <h4>Opportunity Pipeline</h4>
+                <ul>
+                  <li><strong>Sales Process</strong> — Defines which Stage values are available (via Record Types)</li>
+                  <li><strong>Pipeline Inspection</strong> — KPI metrics + Einstein Deal Insights + filters</li>
+                  <li><strong>Opportunity Teams</strong> — Multiple users with defined roles per opportunity</li>
+                  <li><strong>Forecast Categories</strong> — Pipeline, Best Case, Commit, Closed, Omitted</li>
+                </ul>
+              </div>
+            </div>
+          <div class="topic-images">
+            <img src="Assets/content-images/Pasted image 20251118211631.png" alt="" class="topic-img" loading="lazy">
+          </div>
+          </div>
+        </div>
+
+        <div class="topic-card" onclick="toggleTopic('service')">
+          <div class="topic-header">
+            <div class="topic-icon"><img src="Assets/trailhead.png" alt=""></div>
+            <div class="topic-info">
+              <h3>Service &amp; Support Applications</h3>
+              <div class="topic-meta">
+                <span class="weight-badge">10%</span>
+                <span class="trail-link"><a href="https://trailhead.salesforce.com/en/content/learn/modules/service_basics" target="_blank" onclick="event.stopPropagation()">Trailhead ↗</a></span>
+              </div>
+            </div>
+            <span class="chevron" id="chevron-service">▼</span>
+          </div>
+          <div class="topic-body" id="body-service">
+            <div class="topic-grid-2">
+              <div>
+                <h4>Case Creation Methods</h4>
+                <ul>
+                  <li>Manual entry in CRM</li>
+                  <li><strong>Email-to-Case</strong> — From customer support emails. Multiple routing addresses.</li>
+                  <li><strong>Web-to-Case</strong> — HTML form on company website. reCAPTCHA available.</li>
+                  <li><strong>Auto-Response Rules</strong> — Emails the <span class="warn">CUSTOMER</span>, not the owner</li>
+                </ul>
+                <h4>Queues</h4>
+                <ul>
+                  <li>Holding place for unassigned cases</li>
+                  <li>Members: users, roles, or public groups</li>
+                  <li>Creating a queue <strong>automatically creates a list view</strong></li>
+                  <li>Members click 'Accept' to self-assign</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Omni-Channel</h4>
+                <ul>
+                  <li>Routes work to most available/qualified agents</li>
+                  <li>Found in Service Console Utility Bar</li>
+                  <li><strong>Omni Supervisor</strong> — Monitor agent workloads in real-time</li>
+                  <li>Supports: voice, chat, messaging, cases, leads, custom objects</li>
+                </ul>
+                <h4>Case Teams</h4>
+                <ul>
+                  <li>Collaborate on cases with defined roles</li>
+                  <li>Create roles in Case Team Roles setup first</li>
+                  <li>Access levels: Private, Read Only, Read/Write, Visible in Customer Portal</li>
+                </ul>
+                <h4>Macros</h4>
+                <ul>
+                  <li>Automate repetitive tasks in the Service Console (front-end only)</li>
+                  <li>For background automation: use <strong>Flow</strong></li>
+                </ul>
+              </div>
+            </div>
+          <div class="topic-images">
+            <img src="Assets/content-images/Pasted image 20251121183909.png" alt="" class="topic-img" loading="lazy">
+            <img src="Assets/content-images/Pasted image 20251121192002.png" alt="" class="topic-img" loading="lazy">
+            <img src="Assets/content-images/Pasted image 20251121195238.png" alt="" class="topic-img" loading="lazy">
+          </div>
+          </div>
+        </div>
+
+        <div class="topic-card" onclick="toggleTopic('productivity')">
+          <div class="topic-header">
+            <div class="topic-icon"><img src="Assets/trailhead.png" alt=""></div>
+            <div class="topic-info">
+              <h3>Productivity &amp; Collaboration</h3>
+              <div class="topic-meta">
+                <span class="weight-badge">10%</span>
+                <span class="trail-link"><a href="https://trailhead.salesforce.com/en/content/learn/modules/chatter" target="_blank" onclick="event.stopPropagation()">Trailhead ↗</a></span>
+              </div>
+            </div>
+            <span class="chevron" id="chevron-productivity">▼</span>
+          </div>
+          <div class="topic-body" id="body-productivity">
+            <div class="topic-grid-2">
+              <div>
+                <h4>Chatter</h4>
+                <ul>
+                  <li>Posts, files, @mentions, groups, following records</li>
+                  <li><strong>Feed Tracking</strong> — Field changes posted to Chatter feed</li>
+                </ul>
+                <h4>Activities</h4>
+                <ul>
+                  <li><strong>Tasks</strong> — To-do items related to records</li>
+                  <li><strong>Events</strong> — Calendar items with date/time</li>
+                  <li><strong>Activity Timeline</strong> — Past and upcoming activities on a record</li>
+                  <li><strong>Einstein Activity Capture</strong> — Auto-logs emails and events</li>
+                </ul>
+              </div>
+              <div>
+                <h4>AppExchange</h4>
+                <table class="mini-table">
+                  <tr><th>Type</th><th>Code Access</th><th>Upgradeable</th></tr>
+                  <tr><td>Managed</td><td>Locked</td><td>Yes (by publisher)</td></tr>
+                  <tr><td>Unmanaged</td><td>Accessible</td><td>No</td></tr>
+                </table>
+                <h4>Gmail / Outlook Integration</h4>
+                <ul>
+                  <li>Log emails to Salesforce records from Gmail or Outlook</li>
+                  <li>If EAC has emails disabled: users can still click 'Log Email' manually</li>
+                </ul>
+                <h4>Sales Dialer</h4>
+                <ul>
+                  <li>One-click calling from phone number fields</li>
+                  <li>Lightning Experience only</li>
+                  <li>Supports call recording (no extra plugin)</li>
+                </ul>
+              </div>
+            </div>
+          <div class="topic-images">
+            <img src="Assets/content-images/Lesson_Chatter_Group_Page-1024x752.png" alt="" class="topic-img" loading="lazy">
+          </div>
+          </div>
+        </div>
+
+        <div class="topic-card" onclick="toggleTopic('agentforce')">
+          <div class="topic-header">
+            <div class="topic-icon"><img src="Assets/trailhead.png" alt=""></div>
+            <div class="topic-info">
+              <h3>Agentforce &amp; Einstein AI</h3>
+              <div class="topic-meta">
+                <span class="weight-badge">8%</span>
+                <span class="trail-link"><a href="https://trailhead.salesforce.com/en/content/learn/modules/agentforce-basics" target="_blank" onclick="event.stopPropagation()">Trailhead ↗</a></span>
+              </div>
+            </div>
+            <span class="chevron" id="chevron-agentforce">▼</span>
+          </div>
+          <div class="topic-body" id="body-agentforce">
+            <div class="topic-grid-2">
+              <div>
+                <h4>Agentforce</h4>
+                <ul>
+                  <li><strong>Atlas Reasoning Engine</strong> — AI brain using ReAct (Reason + Act) prompting</li>
+                  <li><strong>Topics</strong> — Agent intents/specialties (e.g., 'Order Management')</li>
+                  <li><strong>Actions</strong> — Tools the agent uses (Flows, Apex, Prompt Templates)</li>
+                  <li><strong>Grounding</strong> — Connecting the agent to Salesforce records for context</li>
+                </ul>
+                <h4>Einstein Trust Layer</h4>
+                <ul>
+                  <li><strong>Data Masking</strong> — Hides PII before sending to LLM</li>
+                  <li><strong>Zero Retention</strong> — LLM does NOT store your data</li>
+                  <li><strong>Audit Trail</strong> — All AI interactions logged</li>
+                  <li>Manage via <strong>Permission Sets</strong>. If agent can't act, check Agent User's permissions.</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Einstein Features</h4>
+                <table class="mini-table">
+                  <tr><th>Feature</th><th>Cloud</th><th>Function</th></tr>
+                  <tr><td>Activity Capture</td><td>Sales/Service</td><td>Auto-logs emails &amp; events</td></tr>
+                  <tr><td>Lead Scoring</td><td>Sales</td><td>Predicts lead conversion</td></tr>
+                  <tr><td>Opp Scoring</td><td>Sales</td><td>Predicts Closed Won</td></tr>
+                  <tr><td>Einstein Bots</td><td>Service</td><td>AI customer chat</td></tr>
+                  <tr><td>Next Best Action</td><td>Platform</td><td>Recommends actions</td></tr>
+                  <tr><td>Prediction Builder</td><td>Platform</td><td>Admin-built AI (no code)</td></tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FLASHCARDS -->
+  <section id="flashcards" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2>Interactive Flashcards</h2>
+        <p>Click a card to reveal the answer. Use the arrows to navigate.</p>
+      </div>
+      <div class="flashcard-controls">
+        <button class="filter-btn active" onclick="filterCards('all')">All</button>
+        <button class="filter-btn" onclick="filterCards('concept')">Concepts</button>
+        <button class="filter-btn" onclick="filterCards('mcq')">MCQ Practice</button>
+        <button class="filter-btn" onclick="filterCards('tricky')">Tricky Ones</button>
+      </div>
+      <div class="flashcard-container">
+        <div class="flashcard" id="flashcard" onclick="flipCard()">
+          <div class="card-inner" id="card-inner">
+            <div class="card-front" id="card-front">
+              <div class="card-category" id="card-category">Loading...</div>
+              <div class="card-question" id="card-question">Loading flashcard...</div>
+              <div class="card-hint">Click to reveal answer</div>
+            </div>
+            <div class="card-back" id="card-back">
+              <div class="card-answer" id="card-answer"></div>
+            </div>
+          </div>
+        </div>
+        <div class="flashcard-nav">
+          <button class="nav-btn" onclick="prevCard()">← Previous</button>
+          <span class="card-counter" id="card-counter">1 / 1</span>
+          <button class="nav-btn" onclick="nextCard()">Next →</button>
+        </div>
+        <div class="flashcard-actions">
+          <button class="action-btn shuffle" onclick="shuffleCards()">Shuffle</button>
+          <button class="action-btn reset" onclick="resetCards()">&#8635; Reset</button>
+        </div>
+        <div class="anki-download">
+          <p class="anki-label">Download for Anki</p>
+          <div class="anki-btns">
+            <a href="Assets/downloads/Salesforce_Admin_Flashcards.txt" download class="anki-btn">
+              <img src="Assets/trailhead.png" alt="" class="anki-icon"> Standard Flashcards (.txt)
+            </a>
+            <a href="Assets/downloads/Salesforce_Admin_Image_Cards.txt" download class="anki-btn">
+              <img src="Assets/trailhead.png" alt="" class="anki-icon"> Image Cards (.txt)
+            </a>
+          </div>
+          <p class="anki-note">Import via Anki &rarr; File &rarr; Import &bull; Enable HTML &bull; Tab separator</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHEAT SHEET -->
+  <section id="cheatsheet" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Quick Reference Cheat Sheet</h2>
+        <p>Key facts that commonly appear in exam questions</p>
+      </div>
+      <div class="cheatsheet-grid">
+        <div class="cheat-card">
+          <h3>"CANNOT be reversed"</h3>
+          <ul>
+            <li>Enabling <strong>Multi-Currency</strong></li>
+            <li>Enabling <strong>Custom Fiscal Year</strong></li>
+          </ul>
+        </div>
+        <div class="cheat-card">
+          <h3>Common Traps</h3>
+          <ul>
+            <li>Users can <strong>NEVER</strong> be deleted</li>
+            <li>Auto-Response emails the <strong>CUSTOMER</strong>, not owner</li>
+            <li>Record Types do <strong>NOT</strong> affect sharing</li>
+            <li>Roll-Up Summary needs <strong>Master-Detail</strong> (not Lookup)</li>
+            <li>Sharing Rules can <strong>NEVER</strong> be stricter than OWD</li>
+          </ul>
+        </div>
+        <div class="cheat-card">
+          <h3>Key Limits</h3>
+          <ul>
+            <li>Import Wizard: <strong>50,000</strong> records max</li>
+            <li>Data Loader: <strong>150 million</strong> records max</li>
+            <li>Login History: <strong>20,000</strong> records, <strong>6 months</strong></li>
+            <li>Field History Tracking: <strong>20 fields</strong> per object</li>
+            <li>Bucket Fields: <strong>5</strong> per report, <strong>20</strong> buckets each</li>
+            <li>External IDs: up to <strong>25</strong> per object</li>
+            <li>Recycle Bin: auto-deletes after <strong>15 days</strong></li>
+            <li>Password length: <strong>5–50</strong> characters (not 3–100)</li>
+          </ul>
+        </div>
+        <div class="cheat-card">
+          <h3>Order of Execution</h3>
+          <ol>
+            <li>Validation Rules</li>
+            <li>Duplicate Rules</li>
+            <li>Before-Save Flows</li>
+            <li>After-Save Flows</li>
+            <li>Assignment Rules</li>
+            <li>Auto-Response Rules</li>
+            <li>Workflow Rules</li>
+            <li>Escalation Rules</li>
+          </ol>
+        </div>
+        <div class="cheat-card">
+          <h3>Access Model</h3>
+          <ul>
+            <li><strong>Profile/Permission Set</strong> → Object-level access (CAN they see the object?)</li>
+            <li><strong>OWD</strong> → Record baseline (most restrictive)</li>
+            <li><strong>Role Hierarchy</strong> → Vertical access (manager sees subordinate's records)</li>
+            <li><strong>Sharing Rules</strong> → Horizontal exceptions to OWD</li>
+            <li><strong>FLS</strong> → Field-level visibility and editability</li>
+          </ul>
+        </div>
+        <div class="cheat-card">
+          <h3>Relationship Summary</h3>
+          <ul>
+            <li><strong>Lookup</strong> = loose, child optional, own sharing, no roll-up</li>
+            <li><strong>Master-Detail</strong> = tight, child required, inherits sharing, roll-up enabled</li>
+            <li><strong>Hierarchical</strong> = User object only</li>
+            <li><strong>Standard Object</strong> must be <strong>Master</strong> side</li>
+            <li>Many-to-Many = Junction Object with 2 Master-Details</li>
+          </ul>
+        </div>
+        <div class="cheat-card">
+          <h3>Report Formats</h3>
+          <ul>
+            <li><strong>Tabular</strong> = no groupings</li>
+            <li><strong>Summary</strong> = row groupings</li>
+            <li><strong>Matrix</strong> = row + column groupings</li>
+            <li><strong>Joined</strong> = multiple blocks</li>
+            <li>Format adapts automatically — not selected manually</li>
+            <li>Joined Reports always export as <strong>.xlsx</strong></li>
+          </ul>
+        </div>
+        <div class="cheat-card">
+          <h3>Sandbox Types</h3>
+          <table class="mini-table">
+            <tr><th>Type</th><th>Data</th><th>Refresh</th></tr>
+            <tr><td>Developer</td><td>Metadata</td><td>1 day</td></tr>
+            <tr><td>Dev Pro</td><td>Metadata</td><td>1 day</td></tr>
+            <tr><td>Partial</td><td>Meta+Data</td><td>5 days</td></tr>
+            <tr><td>Full</td><td>All</td><td>29 days</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESOURCES -->
+  <section id="resources" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2>Study Resources</h2>
+        <p>Official Salesforce Trailhead paths and external resources</p>
+      </div>
+      <div class="resources-grid">
+        <div class="resource-category">
+          <h3>Official Certification</h3>
+          <div class="resource-links">
+            <a href="https://trailhead.salesforce.com/en/credentials/administrator" target="_blank" class="resource-link">
+              <img src="Assets/trailhead.png" alt="Trailhead" class="resource-icon-img">
+              <div>
+                <strong>Certification Overview</strong>
+                <p>Official exam guide, objectives, and register</p>
+              </div>
+            </a>
+            <a href="https://trailhead.salesforce.com/en/content/learn/trails/prepare-for-your-salesforce-administrator-credential" target="_blank" class="resource-link">
+              <img src="Assets/trailhead.png" alt="Trailhead" class="resource-icon-img">
+              <div>
+                <strong>Prepare for the Admin Credential</strong>
+                <p>Official Trailhead preparation trail</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="resource-category">
+          <h3>Core Learning Trails</h3>
+          <div class="resource-links">
+            <a href="https://trailhead.salesforce.com/en/content/learn/trails/force_com_admin_beginner" target="_blank" class="resource-link">
+              <img src="Assets/trailhead.png" alt="Trailhead" class="resource-icon-img">
+              <div>
+                <strong>Admin Beginner Trail</strong>
+                <p>Fundamentals of Salesforce administration</p>
+              </div>
+            </a>
+            <a href="https://trailhead.salesforce.com/en/content/learn/trails/force_com_admin_intermediate" target="_blank" class="resource-link">
+              <img src="Assets/trailhead.png" alt="Trailhead" class="resource-icon-img">
+              <div>
+                <strong>Admin Intermediate Trail</strong>
+                <p>Advanced configuration and automation</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="resource-category">
+          <h3>Key Topic Modules</h3>
+          <div class="resource-links">
+            <a href="https://trailhead.salesforce.com/en/content/learn/modules/data_security" target="_blank" class="resource-link">
+              <img src="Assets/trailhead.png" alt="Trailhead" class="resource-icon-img">
+              <div>
+                <strong>Data Security</strong>
+                <p>OWD, Profiles, Roles, Sharing Rules</p>
+              </div>
+            </a>
+            <a href="https://trailhead.salesforce.com/en/content/learn/modules/flow-basics" target="_blank" class="resource-link">
+              <img src="Assets/trailhead.png" alt="Trailhead" class="resource-icon-img">
+              <div>
+                <strong>Flow Basics</strong>
+                <p>Build automation without code</p>
+              </div>
+            </a>
+            <a href="https://trailhead.salesforce.com/en/content/learn/modules/data_modeling" target="_blank" class="resource-link">
+              <img src="Assets/trailhead.png" alt="Trailhead" class="resource-icon-img">
+              <div>
+                <strong>Data Modelling</strong>
+                <p>Objects, relationships, and fields</p>
+              </div>
+            </a>
+            <a href="https://trailhead.salesforce.com/en/content/learn/modules/lex_implementation_reports_dashboards" target="_blank" class="resource-link">
+              <img src="Assets/trailhead.png" alt="Trailhead" class="resource-icon-img">
+              <div>
+                <strong>Reports &amp; Dashboards</strong>
+                <p>Build reports and visualise data</p>
+              </div>
+            </a>
+            <a href="https://trailhead.salesforce.com/en/content/learn/modules/service_basics" target="_blank" class="resource-link">
+              <img src="Assets/trailhead.png" alt="Trailhead" class="resource-icon-img">
+              <div>
+                <strong>Service Cloud Basics</strong>
+                <p>Cases, queues, and support processes</p>
+              </div>
+            </a>
+            <a href="https://trailhead.salesforce.com/en/content/learn/modules/agentforce-basics" target="_blank" class="resource-link">
+              <img src="Assets/trailhead.png" alt="Trailhead" class="resource-icon-img">
+              <div>
+                <strong>Agentforce Basics</strong>
+                <p>AI agents, Einstein Trust Layer</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="resource-category">
+          <h3>Practice Tools</h3>
+          <div class="resource-links">
+            <a href="https://developer.salesforce.com/signup" target="_blank" class="resource-link">
+              <img src="Assets/salesforce.png" alt="Salesforce" class="resource-icon-img">
+              <div>
+                <strong>Free Developer Org</strong>
+                <p>Practice hands-on in a real Salesforce org</p>
+              </div>
+            </a>
+            <a href="https://focusonforce.com" target="_blank" class="resource-link">
+              <span class="resource-icon-text">FoF</span>
+              <div>
+                <strong>Focus on Force</strong>
+                <p>Practice exams and study guides</p>
+              </div>
+            </a>
+          </div>
+        <div class="resource-category">
+          <h3>Official Cert Prep</h3>
+          <div class="resource-links">
+            <a href="https://trailhead.salesforce.com/content/learn/trails/administrator-certification-prep" target="_blank" class="resource-link">
+              <img src="Assets/trailhead.png" alt="Trailhead" class="resource-icon-img">
+              <div>
+                <strong>Admin Cert Prep Trail</strong>
+                <p>Official Trailhead trail covering all exam domains</p>
+              </div>
+            </a>
+            <a href="https://trailhead.salesforce.com/users/strailhead/trailmixes/prepare-for-your-salesforce-administrator-credential" target="_blank" class="resource-link">
+              <img src="Assets/trailhead.png" alt="Trailhead" class="resource-icon-img">
+              <div>
+                <strong>Official Prep Trailmix</strong>
+                <p>Curated modules for the Platform Administrator exam</p>
+              </div>
+            </a>
+            <a href="https://developer.salesforce.com/files/ti/thi/THI-000393/administratorpracticetest.html" target="_blank" class="resource-link">
+              <img src="Assets/ADM-badge.png" alt="ADM" class="resource-icon-img">
+              <div>
+                <strong>Official Practice Test</strong>
+                <p>Sample questions in the actual exam format</p>
+              </div>
+            </a>
+            <a href="https://trailheadacademy.salesforce.com/certificate/exam-platform-admin---Plat-Admn-201" target="_blank" class="resource-link">
+              <img src="Assets/ADM-badge.png" alt="ADM" class="resource-icon-img">
+              <div>
+                <strong>Register for the Exam</strong>
+                <p>Book your ADM-201 exam via Trailhead Academy</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <p><img src="Assets/salesforce.png" alt="Salesforce" class="footer-logo"> <strong>Admin Exam Prep</strong> — Salesforce Certified Administrator (ADM-201)</p>
+          <p class="footer-note">Study notes by IbrahimIF. Not affiliated with Salesforce.</p>
+        </div>
+        <div class="footer-links">
+          <a href="https://trailhead.salesforce.com" target="_blank"><img src="Assets/trailhead.png" alt="" class="footer-trail-logo"> Trailhead</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="flashcards.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
