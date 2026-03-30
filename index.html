@@ -644,7 +644,7 @@
                 <h4>Lead Management</h4>
                 <ul>
                   <li><strong>Web-to-Lead</strong> — HTML form captures leads from website. Validation rules run first.</li>
-                  <li><strong>Assignment Rules</strong> — Auto-assign leads to users/queues</li>
+                  <li><strong>Assignment Rules</strong> — Auto-assign leads and cases to users/queues</li>
                   <li><strong>Auto-Response Rules</strong> — Emails the lead/customer, not the owner</li>
                 </ul>
               </div>
@@ -914,6 +914,37 @@
                   <li><strong>Buyer Agent / Personal Shopper</strong> — ecommerce buying assistance</li>
                   <li><strong>Merchandiser</strong> — assists ecommerce site setup and promotions</li>
                 </ul>
+              </div>
+            </div>
+            <div class="topic-grid-2" style="margin-top:1rem">
+              <div>
+                <h4>Testing in Agentforce Builder</h4>
+                <table class="mini-table">
+                  <tr><th>Tool</th><th>When to Use</th></tr>
+                  <tr><td><strong>Conversation Preview</strong></td><td>Real-time testing during development — see topic &amp; action selection live</td></tr>
+                  <tr><td><strong>Agentforce Testing Center</strong></td><td>Batch testing large volumes of utterances (automated / large-scale)</td></tr>
+                  <tr><td><strong>Enhanced Event Logs</strong></td><td>Review recorded events <em>after</em> interactions occur — not real-time</td></tr>
+                </table>
+                <ul>
+                  <li><span class="warn">"Testing Preview"</span> = does <strong>NOT</strong> exist — exam trap!</li>
+                </ul>
+                <img src="Assets/content-images/Conversation-preview.png" alt="Conversation Preview panel in Agentforce Builder" style="max-width:100%;border-radius:6px;margin-top:10px;border:1px solid var(--border)">
+              </div>
+              <div>
+                <h4>Agentforce &amp; User Permissions</h4>
+                <ul>
+                  <li>Agentforce <strong>inherits the running user's permissions</strong> — OWD, sharing rules, and FLS all apply</li>
+                  <li>If the user <strong>cannot see</strong> a record, the agent <span class="warn">cannot retrieve it either</span></li>
+                  <li>Does <strong>NOT</strong> use a separate overriding permission set for record access</li>
+                  <li>Does <strong>NOT</strong> require "View All Data" to function</li>
+                  <li><strong>Einstein Trust Layer</strong> = data masking during LLM processing only — it does <em>not</em> control record-level access</li>
+                </ul>
+                <table class="mini-table">
+                  <tr><th>Problem</th><th>Cause</th><th>Fix</th></tr>
+                  <tr><td>Agent can't retrieve a record</td><td>User lacks sharing access (OWD/rules)</td><td>Update sharing rules or OWD</td></tr>
+                  <tr><td>Agent can't see a field</td><td>FLS restricts that field for the user</td><td>Update field-level security</td></tr>
+                  <tr><td>Sensitive data hidden from LLM</td><td>Einstein Trust Layer masking</td><td>Review Trust Layer settings</td></tr>
+                </table>
               </div>
             </div>
           </div>

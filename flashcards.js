@@ -2171,6 +2171,38 @@ const FLASHCARDS = [
     explanation: "Page Layout required = UI only. Database/FLS required = all interfaces. Validation Rule = all saves including API (unless bypassed). This distinction is a common exam trap."
   },
 
+  // ── AGENTFORCE TESTING & PERMISSIONS ─────────────────────────
+  {
+    category: "Concepts",
+    topic: "Agentforce",
+    question: "<b>Agentforce Testing Tools — Which does what?</b>",
+    answer: "<table><tr><th>Tool</th><th>Purpose</th></tr><tr><td><b>Conversation Preview</b></td><td>Real-time testing in Agentforce Builder — see topic &amp; action selection live</td></tr><tr><td><b>Testing Center</b></td><td>Batch/automated testing of large volumes of utterances</td></tr><tr><td><b>Enhanced Event Logs</b></td><td>Review recorded events after interactions — not real-time</td></tr></table><br>🚨 <b>'Testing Preview'</b> = does NOT exist.",
+    explanation: "Conversation Preview is the go-to for interactive development. Testing Center is for bulk validation. Enhanced Event Logs are retrospective."
+  },
+  {
+    category: "MCQ",
+    topic: "Agentforce",
+    question: "An admin wants to observe in real time how the agent selects topics and actions for specific utterances during development. What should they use?",
+    options: ["A. Agentforce Testing Center", "B. Enhanced Event Logs", "C. Conversation Preview", "D. Testing Preview"],
+    answer: "C. Conversation Preview",
+    explanation: "Conversation Preview (in Agentforce Builder) provides real-time feedback on topic and action selection during development. Testing Center = batch/automated. Enhanced Event Logs = post-interaction review. Testing Preview does NOT exist."
+  },
+  {
+    category: "Concepts",
+    topic: "Agentforce",
+    question: "<b>Agentforce &amp; User Permissions — How does record access work?</b>",
+    answer: "Agentforce <b>inherits the running user's permissions</b>.<br><br>✔ OWD, sharing rules, and FLS all apply<br>✔ If the user can't see a record → the agent can't either<br><br>❌ Does NOT use a separate overriding permission set<br>❌ Does NOT require 'View All Data'<br><br><b>Einstein Trust Layer</b> = data masking during LLM processing only — it does NOT control record-level access.",
+    explanation: "Record access failures are caused by standard Salesforce sharing restrictions, not the Trust Layer. The Trust Layer is about protecting data sent to the LLM."
+  },
+  {
+    category: "MCQ",
+    topic: "Agentforce",
+    question: "A sales manager cannot retrieve a specific Opportunity record through an Agentforce agent. What is the most likely cause?",
+    options: ["A. The Einstein Trust Layer is redacting the record", "B. The agent requires 'View All Data' permission", "C. The agent uses a separate permission set that restricts access", "D. The sales manager lacks the necessary sharing access to that record"],
+    answer: "D. The sales manager lacks the necessary sharing access to that record",
+    explanation: "Agentforce mirrors the running user's access. If the user can't see the record due to OWD or sharing rules, the agent can't retrieve it either. Einstein Trust Layer handles data masking — it doesn't block record retrieval."
+  },
+
   // ── SSO, MFA, PATH, IN-APP GUIDANCE ──────────────────────────
   {
     category: "Concepts",
