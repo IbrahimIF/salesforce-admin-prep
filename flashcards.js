@@ -1920,6 +1920,294 @@ const FLASHCARDS = [
     answer: "<table><tr><th>Feature</th><th>Function</th></tr><tr><td>Einstein Activity Capture</td><td>Auto-logs emails/events to records</td></tr><tr><td>Einstein Lead Scoring</td><td>Predicts which leads will convert</td></tr><tr><td>Einstein Opportunity Scoring</td><td>Predicts likelihood of Closed Won</td></tr><tr><td>Einstein Bots</td><td>Automated customer service chatbots</td></tr><tr><td>Einstein Next Best Action</td><td>Recommends offers/actions at the right time</td></tr><tr><td>Einstein Prediction Builder</td><td>Admins build custom AI models (no code)</td></tr></table>",
     explanation: ""
   },
+  {
+    category: "MCQ",
+    topic: "Agentforce",
+    question: "What defines what an Agentforce agent CAN and CANNOT do?",
+    options: ["A. Topics", "B. Actions", "C. Guardrails", "D. Channels"],
+    answer: "C. Guardrails",
+    explanation: "Guardrails are natural-language rules that set the agent's operating boundaries — what it is allowed to do, what to avoid, and when to escalate to a human. Topics define intent; Actions define what tasks to run; Channels define where the agent operates."
+  },
+  {
+    category: "MCQ",
+    topic: "Agentforce",
+    question: "Which of the following best describes an Agentforce agent compared to a traditional chatbot?",
+    options: ["A. Agents use scripted conversation trees", "B. Agents are autonomous and use LLMs to reason and act proactively", "C. Agents only respond to user input — they cannot act without a prompt", "D. Agents are limited to the Service Cloud console"],
+    answer: "B. Agents are autonomous and use LLMs to reason and act proactively",
+    explanation: "Traditional chatbots use decision trees and scripted responses. Agentforce agents use LLMs to reason over full context, select topics, chain actions, and operate proactively 24/7 — they are NOT just reactive chatbots."
+  },
+  {
+    category: "MCQ",
+    topic: "Agentforce",
+    question: "When an Agentforce agent receives a user message, what is the FIRST thing the Reasoning Engine does?",
+    options: ["A. Executes a Flow", "B. Classifies the intent into a Topic", "C. Retrieves Knowledge Articles", "D. Escalates to a human"],
+    answer: "B. Classifies the intent into a Topic",
+    explanation: "The Reasoning Engine first classifies the user's message into a Topic (intent). It then selects appropriate Actions for that topic, executes them, and applies guardrails throughout."
+  },
+  {
+    category: "Tricky",
+    topic: "Agentforce",
+    question: "A company wants an AI agent that handles customer service issues 24/7 without pre-scripted flows. Which out-of-the-box Agentforce agent should they use?",
+    answer: "Service Agent. It replaces traditional scripted chatbots and handles a wide range of service issues dynamically using LLM reasoning — no pre-programmed scenarios required.",
+    explanation: "The key distinction in the exam: traditional chatbot = scripted, Service Agent = autonomous. Sales SDR handles lead engagement; Sales Coach handles rep training; Campaign Optimizer handles marketing."
+  },
+
+  // ── SECURITY — SHARING MODEL, LOGIN, FLS ──────────────────────
+  {
+    category: "Concepts",
+    topic: "Security",
+    question: "<b>What is the Sharing Model (OWD) in Salesforce?</b>",
+    answer: "The <b>Sharing Model (OWD)</b> defines the <b>baseline record access</b> across the org.<br><br>Types:<br>- <b>Private</b> → Users see only their own records<br>- <b>Public Read Only</b> → All users can view records<br>- <b>Public Read/Write</b> → All users can view &amp; edit records<br>- <b>Controlled by Parent</b> → Child record access inherited from parent",
+    explanation: ""
+  },
+  {
+    category: "Concepts",
+    topic: "Security",
+    question: "<b>How can access be granted in a Private Sharing Model?</b>",
+    answer: "To extend access beyond OWD Private:<br>- <b>Role Hierarchy</b> → Managers see subordinates' records<br>- <b>Sharing Rules</b> → Automatic (owner-based or criteria-based)<br>- <b>Manual Sharing</b> → One-off record access<br>- <b>Account / Opportunity Teams</b> → Record-level access<br>- <b>Apex Managed Sharing</b> → Programmatic sharing<br><br><b>NOT Profiles or Permission Sets</b> — those are object/field level only",
+    explanation: ""
+  },
+  {
+    category: "Concepts",
+    topic: "Security",
+    question: "<b>Object Permissions vs Field-Level Security (FLS)</b>",
+    answer: "<b>Object Permissions:</b> Can user access the object at all? (Read/Create/Edit/Delete/View All/Modify All)<br><br><b>FLS:</b> Can user see or edit a specific field? (Visible / Read-only / Hidden)<br><br><b>Rules:</b><br>- Both affect the same record, from different layers<br>- FLS can only restrict — cannot grant beyond object permissions<br>- If object access is blocked, FLS is irrelevant<br>- FLS does NOT control tab visibility",
+    explanation: ""
+  },
+  {
+    category: "Concepts",
+    topic: "Security",
+    question: "<b>Which Teams actually grant record-level access?</b>",
+    answer: "<b>✔ Grant Access:</b><br>- Account Teams (Read or Read/Write)<br>- Opportunity Teams (Read or Read/Write)<br><br><b>⚠ Limited:</b><br>- Case Teams (only with extra sharing rules)<br><br><b>❌ Do NOT exist / grant access:</b><br>- Lead Teams (do not exist in Salesforce)<br>- Content Teams (use different sharing model)",
+    explanation: ""
+  },
+  {
+    category: "Concepts",
+    topic: "Security",
+    question: "<b>What is a Public Group?</b>",
+    answer: "A <b>Public Group</b> is a collection of users used for sharing, queues, and folder access.<br><br><b>Can include:</b><br>- Users<br>- Roles<br>- Roles + Subordinates<br>- Other Public Groups<br>- Territories<br><br><b>Cannot include:</b> Profiles, Permission Sets<br><b>Max members:</b> 2,000<br><br>A Public Group can contain roles but is NOT itself a role.",
+    explanation: ""
+  },
+  {
+    category: "Tricky",
+    topic: "Security",
+    question: "<b>Can Profiles or Permission Sets override OWD to grant access to other users' records?</b>",
+    answer: "❌ NO.<br><br>Profiles/Permission Sets control <b>object + field access</b> — what actions a user can take IF they have access.<br><br>OWD controls <b>record visibility</b> — WHICH records a user can see.<br><br>If OWD is Private, a user with full profile permissions still cannot see another user's records without a sharing mechanism.",
+    explanation: ""
+  },
+  {
+    category: "Tricky",
+    topic: "Security",
+    question: "<b>Do Org-Wide IP Restrictions (Trusted IP Ranges) block login?</b>",
+    answer: "❌ NO — they only trigger <b>verification</b> (MFA / activation code).<br><br>✔ To <b>absolutely block</b> login: use <b>Profile-based IP Restrictions</b> (Profile → Login IP Ranges).<br><br>Trusted IP Ranges (Setup → Network Access) = challenge access, not block.",
+    explanation: ""
+  },
+  {
+    category: "Tricky",
+    topic: "Security",
+    question: "<b>Do org-wide login hour restrictions exist in Salesforce?</b>",
+    answer: "❌ NO — login hours only exist at the <b>Profile level</b> (Profile → Login Hours).<br><br>There is no org-wide login hours setting.<br><br>Profile Login Hours = absolute block at specified times.",
+    explanation: ""
+  },
+  {
+    category: "Tricky",
+    topic: "Security",
+    question: "<b>Does Field-Level Security hide a tab from users?</b>",
+    answer: "❌ NOT directly.<br><br>Tab visibility is controlled by:<br>✔ Object permissions (Read access required)<br>✔ Tab visibility setting in Profile (Default On / Off / Hidden)<br>✔ Tab assigned to the app<br><br>FLS affects fields inside a record — not the tab itself.<br><br>⚠ Rare edge case: if ALL fields are hidden via FLS, the object may appear non-functional.",
+    explanation: ""
+  },
+  {
+    category: "MCQ",
+    topic: "Security",
+    question: "In a private sharing model, which features can grant access to Account records?",
+    options: ["A. Profiles", "B. Sharing Rules", "C. Role Hierarchy", "D. Manual Sharing"],
+    answer: "B, C, D — Sharing Rules, Role Hierarchy, and Manual Sharing",
+    explanation: "Profiles and Permission Sets control object/field access, NOT record access. Only sharing mechanisms (Role Hierarchy, Sharing Rules, Manual Sharing, Teams, Apex) can open access beyond OWD Private."
+  },
+  {
+    category: "MCQ",
+    topic: "Security",
+    question: "A Salesforce Administrator needs to absolutely deny login access outside specified hours and IP ranges. Which two options should be used?",
+    options: ["A. Organization-based login hour restrictions", "B. Organization-wide IP restrictions", "C. Profile-based IP restrictions", "D. Profile-based login hour restrictions"],
+    answer: "C. Profile-based IP restrictions and D. Profile-based login hour restrictions",
+    explanation: "Profile-level settings completely block login. Org-wide IP (Trusted IP Ranges) only triggers MFA/verification. Org-wide login hours do not exist as a feature."
+  },
+  {
+    category: "MCQ",
+    topic: "Security",
+    question: "A new custom tab is not visible to HR team users in their app. What should the admin check? (Choose 3)",
+    options: ["A. Tab added to the app", "B. Field-Level Security for the object", "C. Object permission on the HR profile", "D. Assigned app settings for the profile", "E. Tab visibility on the HR profile"],
+    answer: "A, C, E — Tab in app, Object permissions, Tab visibility in profile",
+    explanation: "Tab visibility requires: (1) tab added to the app, (2) object Read permission on the profile, (3) tab set to Default On or Default Off (not Hidden) on the profile. FLS does not directly control tab visibility."
+  },
+  {
+    category: "MCQ",
+    topic: "Security",
+    question: "Which team types directly grant record-level sharing access?",
+    options: ["A. Account Teams", "B. Opportunity Teams", "C. Lead Teams", "D. Case Teams"],
+    answer: "A. Account Teams and B. Opportunity Teams",
+    explanation: "Account Teams and Opportunity Teams directly override OWD by granting Read or Read/Write access to specific records. Lead Teams do not exist. Case Teams require additional sharing rules to grant access."
+  },
+  {
+    category: "Concepts",
+    topic: "Config & Setup",
+    question: "<b>What is the Login Access Policy in Salesforce?</b>",
+    answer: "Found in <b>Setup → Login Access Policies</b>.<br><br>Controls:<br>- Whether admins can log in as any user (impersonation)<br>- Grant Login Access duration (1 day / 3 days / 1 week / 1 month)<br><br><b>Admin Login as Any User:</b><br>- Only System Admins<br>- Logged in Setup Audit Trail<br><br><b>Grant Login Access:</b><br>- Users voluntarily grant Salesforce Support or admins access<br>- Found in User Settings → Grant Account Login Access",
+    explanation: ""
+  },
+
+  // ── APP TOOLS, MY DOMAIN, PICKLISTS, APPROVAL PROCESS ────────
+  {
+    category: "MCQ",
+    topic: "Config & Setup",
+    question: "An admin needs to create a new Lightning app and assign navigation items to it. Which tool should they use?",
+    options: ["A. App Launcher", "B. Lightning App Builder", "C. App Manager", "D. Object Manager"],
+    answer: "C. App Manager",
+    explanation: "App Manager (in Setup) is the admin tool for creating and managing Lightning apps, assigning navigation items, and controlling app visibility. App Builder builds individual pages; App Launcher is the end-user waffle icon; Object Manager handles data model."
+  },
+  {
+    category: "MCQ",
+    topic: "Config & Setup",
+    question: "Which of the following is true about My Domain in Salesforce?",
+    options: ["A. My Domain is not available in sandbox environments", "B. Visualforce page URLs do not change when My Domain is enabled", "C. Users cannot log in via login.salesforce.com once My Domain is active", "D. Visualforce page URLs change when My Domain is enabled and deployed"],
+    answer: "D. Visualforce page URLs change when My Domain is enabled and deployed",
+    explanation: "My Domain IS available in sandboxes. Users CAN still log in via login.salesforce.com unless explicitly prevented. A domain request CAN be cancelled before deployment. But Visualforce page URLs DO change — any hardcoded links need updating."
+  },
+  {
+    category: "MCQ",
+    topic: "Object Manager",
+    question: "A multi-select picklist field is used on the Account object. Which of the following is NOT possible with this field?",
+    options: ["A. Displaying it on a page layout", "B. Using it in a Flow condition", "C. Using it in a Roll-Up Summary field", "D. Filtering records in a list view"],
+    answer: "C. Using it in a Roll-Up Summary field",
+    explanation: "Multi-select picklist fields cannot be used in Roll-Up Summary fields, Formula fields, or standard reports. They CAN appear on page layouts, in list views, and in Flow conditions."
+  },
+  {
+    category: "MCQ",
+    topic: "Object Manager",
+    question: "Which field types can serve as the CONTROLLING field in a dependent picklist relationship?",
+    options: ["A. Text and Number only", "B. Picklist and Checkbox only", "C. Any field type", "D. Lookup and Formula only"],
+    answer: "B. Picklist and Checkbox only",
+    explanation: "Only Picklist and Checkbox fields can be controlling fields in a dependent picklist relationship. The controlling field determines which values appear in the dependent (child) picklist."
+  },
+  {
+    category: "MCQ",
+    topic: "Config & Setup",
+    question: "Users of an org need edit access to all Contacts associated with Accounts they own. Which OWD setting for the Contact object meets this requirement?",
+    options: ["A. Private", "B. Controlled by Parent", "C. Public Read/Write", "D. Public Read Only"],
+    answer: "B. Controlled by Parent",
+    explanation: "Controlled by Parent means the child record's access is inherited from the parent. If a user owns the Account, they get edit access to its Contacts. Private would require sharing rules; Public Read/Write gives everyone access — too broad."
+  },
+  {
+    category: "MCQ",
+    topic: "Automation",
+    question: "A flow encountered an error and the admin received an error email with no debug link. What is a likely reason?",
+    options: ["A. The flow is active", "B. The flow is a platform event-triggered flow", "C. The error happened in a Screen Flow element", "D. The flow has been deployed to production"],
+    answer: "B. The flow is a platform event-triggered flow",
+    explanation: "Platform event-triggered flows do NOT save failed flow interviews, so no debug link is included in the error email. Active flows (screen, record-triggered, scheduled, auto-launched) DO save failed interviews and include debug links. Draft/InvalidDraft flows also don't save interviews."
+  },
+  {
+    category: "MCQ",
+    topic: "Automation",
+    question: "An admin needs to route a discount request to a manager for approval and lock the record during review. What should they use?",
+    options: ["A. Assignment Rule", "B. Flow with approval element", "C. Approval Process", "D. Escalation Rule"],
+    answer: "C. Approval Process",
+    explanation: "Approval Processes are purpose-built for formal approval workflows: they route records to approvers, lock the record during review, and take configurable actions on approval/rejection (field updates, email alerts, tasks). Keywords: 'formal approval', 'manager sign-off', 'record lock'."
+  },
+  {
+    category: "Tricky",
+    topic: "Object Manager",
+    question: "Is Roll-Up Summary a type of Formula field?",
+    answer: "No. Roll-Up Summary is its own separate field type. It aggregates values from child records (COUNT, SUM, MIN, MAX) using a Master-Detail relationship. Formula Fields calculate a value on the SAME record using formula syntax. They are completely different field types.",
+    explanation: "Common trap: Roll-Up uses SUM, so students think it's a formula. SUM is just an aggregation option — Roll-Up Summary is stored in the database (Formula Fields are not) and requires Master-Detail (Formula Fields do not)."
+  },
+
+  // ── PRODUCTIVITY & COLLABORATION ─────────────────────────────
+  {
+    category: "MCQ",
+    topic: "Productivity",
+    question: "What is the key difference between a Task and an Event in Salesforce?",
+    options: ["A. Tasks have a start and end time; Events have only a due date", "B. Tasks are to-do items with a due date; Events are calendar appointments with start and end time", "C. Both are identical — only the label differs", "D. Events are only available in Classic"],
+    answer: "B. Tasks are to-do items with a due date; Events are calendar appointments with start and end time",
+    explanation: "Tasks = action items (call back, send email). Events = meetings/appointments with duration. Events appear on the calendar; both appear on the Activity Timeline."
+  },
+  {
+    category: "MCQ",
+    topic: "Productivity",
+    question: "A user wants to allow a colleague to view their calendar and add events to it. Which sharing level should they grant?",
+    options: ["A. Hide Details", "B. Show Details", "C. Show Details & Add Events", "D. Full Access"],
+    answer: "C. Show Details & Add Events",
+    explanation: "Calendar sharing levels from most to least access: Full Access > Show Details & Add Events > Hide Details & Add Events > Show Details > Hide Details. 'Show Details & Add Events' lets the colleague view and create events."
+  },
+  {
+    category: "Tricky",
+    topic: "Productivity",
+    question: "Einstein Activity Capture (EAC) auto-logs emails. Can you build standard Salesforce reports on EAC-synced emails?",
+    answer: "No. EAC data is stored outside Salesforce's standard data model, so it does NOT appear in standard Activity reports. You need Einstein Analytics / CRM Analytics for reporting on EAC data.",
+    explanation: "This is a common trap. EAC syncs data but stores it externally — standard Report Builder cannot access it. If reporting on email activity is required, consider using Log Email manually or Email-to-Salesforce (BCC)."
+  },
+
+  // ── OBJECT MANAGER (DYNAMIC FORMS / FIELD TYPES) ─────────────
+  {
+    category: "MCQ",
+    topic: "Object Manager",
+    question: "An admin wants to show a field on a record page only when the Status field equals 'Active'. What feature should they use?",
+    options: ["A. Validation Rule", "B. Page Layout conditional fields", "C. Dynamic Forms with visibility rules in Lightning App Builder", "D. Field-Level Security"],
+    answer: "C. Dynamic Forms with visibility rules in Lightning App Builder",
+    explanation: "Dynamic Forms moves fields from Page Layouts into Lightning App Builder components, where you can add component visibility rules. Available on custom objects (and select standard objects). Page Layouts do not support conditional field visibility natively."
+  },
+  {
+    category: "MCQ",
+    topic: "Object Manager",
+    question: "Where are Dynamic Forms configured?",
+    options: ["A. Object Manager → Fields & Relationships", "B. Setup → Page Layouts", "C. Lightning App Builder", "D. Profile Settings"],
+    answer: "C. Lightning App Builder",
+    explanation: "Dynamic Forms are configured in Lightning App Builder by migrating the Fields & Buttons section of a Page Layout into individual field components. Each component can have its own visibility rule."
+  },
+  {
+    category: "Tricky",
+    topic: "Object Manager",
+    question: "A field is marked Required on a Page Layout but not at the database level (FLS). Can a record be saved without that field via the API?",
+    answer: "Yes. Required on a Page Layout is only enforced in the UI through that specific layout. API calls and automation (Flow, Apex) bypass page layout requirements. Only a Validation Rule or database-level Required (set on the field itself) enforces the requirement universally.",
+    explanation: "Page Layout required = UI only. Database/FLS required = all interfaces. Validation Rule = all saves including API (unless bypassed). This distinction is a common exam trap."
+  },
+
+  // ── SSO, MFA, PATH, IN-APP GUIDANCE ──────────────────────────
+  {
+    category: "Concepts",
+    topic: "Security",
+    question: "<b>SSO vs MFA — What's the difference?</b>",
+    answer: "<table><tr><th></th><th>SSO</th><th>MFA</th></tr><tr><td>Purpose</td><td>One login for multiple apps</td><td>Extra verification step</td></tr><tr><td>External IdP</td><td>✔ Yes (Azure, Okta, Google)</td><td>❌ No</td></tr><tr><td>Uses phone/app/key</td><td>❌ No</td><td>✔ Yes</td></tr><tr><td>SF Password needed</td><td>❌ Not required</td><td>✔ Yes (step 1)</td></tr></table><br><b>My Domain</b> is required to enable SSO.",
+    explanation: ""
+  },
+  {
+    category: "Tricky",
+    topic: "Security",
+    question: "<b>MFA Admin Exam Traps</b>",
+    answer: "❌ Admins CANNOT see MFA verification codes<br>❌ Admins are NOT notified of MFA codes<br>❌ MFA codes are never sent to admins<br><br>✔ Admins CAN:<br>- Reset MFA for a user<br>- Remove MFA registration<br>- Require MFA via Profile or Permission Set<br><br>👉 MFA codes are user-only — period.",
+    explanation: ""
+  },
+  {
+    category: "Concepts",
+    topic: "Productivity",
+    question: "<b>Path vs In-App Guidance — What's the difference?</b>",
+    answer: "<table><tr><th></th><th>Path</th><th>In-App Guidance</th></tr><tr><td>Purpose</td><td>Visual stage progress on records</td><td>User training & onboarding</td></tr><tr><td>Record-based</td><td>✔ Yes</td><td>❌ No</td></tr><tr><td>Key fields per stage</td><td>✔ Yes</td><td>❌ No</td></tr><tr><td>Tooltips/walkthroughs</td><td>❌ Limited</td><td>✔ Yes</td></tr></table><br><b>Memory rule:</b><br>Chatter = communication | Path = process | In-App Guidance = training<br><br>Path does <b>NOT</b> enforce logic — it is visual only.",
+    explanation: ""
+  },
+  {
+    category: "Tricky",
+    topic: "Object Manager",
+    question: "<b>Formula vs Roll-Up — Which to use?</b>",
+    answer: "✔ <b>Formula Field</b> — summing/calculating fields on the SAME record<br>✔ <b>Roll-Up Summary</b> — aggregating values across CHILD records (requires Master-Detail)<br><br>🚨 Key Exam Rule:<br>If NO relationship is mentioned → Roll-Up Summary is <b>WRONG</b><br><br>Example trap:<br>\"Sum 5 scoring fields on the same Lead record\" → <b>Formula Field</b> (not Roll-Up)",
+    explanation: "Roll-Up Summary cannot work on fields within the same record — it only aggregates across related child records in a Master-Detail relationship."
+  },
+  {
+    category: "MCQ",
+    topic: "Object Manager",
+    question: "An admin needs a non-editable field that totals 5 scoring fields on the same Lead record. What should they use?",
+    options: ["A. Roll-Up Summary Field", "B. Formula Field", "C. Workflow Rule with field update", "D. Flow"],
+    answer: "B. Formula Field",
+    explanation: "Formula fields calculate values on the same record and are read-only by default. Roll-Up Summary requires a Master-Detail relationship and aggregates child records — it cannot sum fields on the same record. Flow could work but is overkill for simple math."
+  },
 
   // GENERAL
   {
