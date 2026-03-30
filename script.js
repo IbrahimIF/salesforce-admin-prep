@@ -51,8 +51,22 @@ let allCards = typeof FLASHCARDS !== 'undefined' ? [...FLASHCARDS] : [];
 let filtered = [...allCards];
 let current = 0;
 let activeFilter = 'all';
+let activeModule = 'all';
 
 const FILTER_MAP = { all: null, concept: 'Concepts', mcq: 'MCQ', tricky: 'Tricky' };
+
+const MODULE_MAP = {
+  all:          null,
+  config:       ['Config & Setup'],
+  objmgr:       ['Object Manager', 'App Builder'],
+  automation:   ['Automation'],
+  data:         ['Data & Analytics'],
+  security:     ['Security & Sharing', 'Security'],
+  sales:        ['Sales & Marketing'],
+  service:      ['Service & Support'],
+  productivity: ['Productivity'],
+  agentforce:   ['Agentforce'],
+};
 
 function buildCard(card) {
   const category = document.getElementById('card-category');
@@ -146,32 +160,45 @@ function shuffleCards() {
   if (filtered.length > 0) buildCard(filtered[current]);
 }
 
-function resetCards() {
-  const mapped = FILTER_MAP[activeFilter];
-  filtered = mapped ? allCards.filter(c => c.category === mapped) : [...allCards];
-  current = 0;
-  if (filtered.length > 0) buildCard(filtered[current]);
-}
+function applyFilters() {
+  const catMatch  = FILTER_MAP[activeFilter];
+  const modTopics = MODULE_MAP[activeModule];
 
-function filterCards(category) {
-  activeFilter = category;
-
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.getAttribute('onclick').includes(`'${category}'`));
+  filtered = allCards.filter(c => {
+    const matchCat = !catMatch  || c.category === catMatch;
+    const matchMod = !modTopics || modTopics.includes(c.topic);
+    return matchCat && matchMod;
   });
 
-  const mapped = FILTER_MAP[category];
-  filtered = mapped ? allCards.filter(c => c.category === mapped) : [...allCards];
   current = 0;
-
   if (filtered.length > 0) {
     buildCard(filtered[current]);
   } else {
     const q = document.getElementById('card-question');
-    if (q) q.textContent = 'No cards in this category.';
+    if (q) q.innerHTML = 'No cards match this filter.';
     const counter = document.getElementById('card-counter');
     if (counter) counter.textContent = '0 / 0';
   }
+}
+
+function resetCards() {
+  applyFilters();
+}
+
+function filterCards(category) {
+  activeFilter = category;
+  document.querySelectorAll('.filter-btn:not(.module-btn)').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('onclick').includes(`'${category}'`));
+  });
+  applyFilters();
+}
+
+function filterModule(module) {
+  activeModule = module;
+  document.querySelectorAll('.filter-btn.module-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('onclick').includes(`'${module}'`));
+  });
+  applyFilters();
 }
 
 // ── INIT ─────────────────────────────────────────────────────

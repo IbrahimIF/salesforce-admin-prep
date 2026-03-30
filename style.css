@@ -208,7 +208,8 @@ body { font-family: var(--font); background: var(--sf-bg); color: var(--text); l
 .layer-5 { background: var(--sf-light); color: var(--sf-navy); border: 1px solid rgba(0,112,210,0.25); }
 
 /* ── FLASHCARDS ─────────────────────────────────────────── */
-.flashcard-controls { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 28px; }
+.flashcard-controls { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 12px; }
+.flashcard-controls:last-of-type { margin-bottom: 28px; }
 .filter-btn {
   padding: 7px 18px; border: 1.5px solid var(--border);
   background: #fff; color: var(--text-muted);
@@ -217,6 +218,11 @@ body { font-family: var(--font); background: var(--sf-bg); color: var(--text); l
 }
 .filter-btn:hover, .filter-btn.active {
   background: var(--sf-blue); border-color: var(--sf-blue); color: #fff;
+}
+.module-filters { margin-top: 0; }
+.filter-btn.module-btn { font-size: 0.78rem; padding: 5px 13px; }
+.filter-btn.module-btn:hover, .filter-btn.module-btn.active {
+  background: #1a7f5e; border-color: #1a7f5e; color: #fff;
 }
 
 .flashcard-container { max-width: 720px; margin: 0 auto; }
