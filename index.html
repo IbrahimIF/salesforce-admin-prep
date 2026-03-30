@@ -857,10 +857,14 @@
                 </ul>
                 <h4>Einstein Trust Layer</h4>
                 <ul>
-                  <li><strong>Data Masking</strong> — Hides PII before sending to LLM</li>
-                  <li><strong>Zero Retention</strong> — LLM does NOT store your data</li>
+                  <li><strong>Data Masking (PII)</strong> — Replaces sensitive data (SSNs, credit cards) with placeholders <em>before</em> sending to LLM</li>
+                  <li><strong>Zero Data Retention</strong> — LLM provider does NOT store or train on your data (data still sent, just not retained)</li>
+                  <li><strong>Prompt Defense</strong> — Detects and blocks jailbreaking / malicious prompt injection attempts</li>
+                  <li><strong>Toxic Language Detection</strong> — Scans AI <em>output</em> to block harmful or offensive content</li>
                   <li><strong>Audit Trail</strong> — All AI interactions logged</li>
-                  <li>Manage via <strong>Permission Sets</strong>. If agent can't act, check Agent User's permissions.</li>
+                </ul>
+                <ul>
+                  <li><span class="warn">Data Masking ≠ Zero Data Retention</span> — masking hides data in the prompt; retention controls whether LLM stores it</li>
                 </ul>
               </div>
               <div>
@@ -913,7 +917,15 @@
                   <li><strong>Campaign Optimizer</strong> — automates full marketing campaign lifecycle</li>
                   <li><strong>Buyer Agent / Personal Shopper</strong> — ecommerce buying assistance</li>
                   <li><strong>Merchandiser</strong> — assists ecommerce site setup and promotions</li>
+                  <li><strong>Employee Agent</strong> — internal staff assistant: HR questions, time-off balance, IT helpdesk tickets via Slack or Salesforce</li>
                 </ul>
+                <h4>AI vs Traditional Automation</h4>
+                <table class="mini-table">
+                  <tr><th>Use Agentforce (AI)</th><th>Use Traditional Automation</th></tr>
+                  <tr><td>Interpret unstructured data (e.g. summarise case history)</td><td>Deterministic / compliance-critical actions (e.g. re-assign by priority)</td></tr>
+                  <tr><td>Natural language responses</td><td>Predictable, rule-based outcomes every time</td></tr>
+                  <tr><td>Context-aware reasoning</td><td>Case assignment rules, flows, validation rules</td></tr>
+                </table>
               </div>
             </div>
             <div class="topic-grid-2" style="margin-top:1rem">

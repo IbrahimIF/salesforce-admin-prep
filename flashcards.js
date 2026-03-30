@@ -2203,6 +2203,39 @@ const FLASHCARDS = [
     explanation: "Agentforce mirrors the running user's access. If the user can't see the record due to OWD or sharing rules, the agent can't retrieve it either. Einstein Trust Layer handles data masking — it doesn't block record retrieval."
   },
 
+  {
+    category: "MCQ",
+    topic: "Agentforce",
+    question: "A sales team is overwhelmed with inbound leads and cannot respond quickly enough, missing opportunities. They need an agent to engage leads 24/7, answer product questions, and schedule meetings. Which Agentforce agent type should they use?",
+    options: ["A. Agentforce Service Agent", "B. Agentforce Sales Coach", "C. Agentforce Employee Agent", "D. Agentforce SDR"],
+    answer: "D. Agentforce SDR",
+    explanation: "The SDR (Sales Development Representative) is built for high-volume inbound lead engagement — it operates 24/7, answers product questions, and schedules meetings for reps. Service Agent = customer support. Sales Coach = internal rep training. Employee Agent = internal staff productivity."
+  },
+  {
+    category: "MCQ",
+    topic: "Agentforce",
+    question: "An admin needs: (1) an AI-generated synopsis of lengthy case history for support agents, and (2) automatic reassignment of High-priority cases to a compliance queue every time. What is the best approach?",
+    options: ["A. Agentforce for case reassignment + Flow for case synopsis", "B. Agentforce for both tasks to unify the process", "C. Agentforce for the case synopsis + Case Assignment Rule for reassignment", "D. Screen Flow for the synopsis + Agentforce to monitor for high-priority cases"],
+    answer: "C. Agentforce for the case synopsis + Case Assignment Rule for reassignment",
+    explanation: "Use AI for tasks requiring interpretation of unstructured data (summarising case history). Use traditional automation (Assignment Rules, Flows) for deterministic/compliance-critical tasks that must produce the same result every time. Mixing them is best practice."
+  },
+  {
+    category: "MCQ",
+    topic: "Agentforce",
+    question: "Which Einstein Trust Layer feature specifically identifies sensitive data (e.g. credit card numbers, email addresses) and replaces it with placeholder text before the prompt is sent to an external LLM?",
+    options: ["A. Zero Data Retention", "B. Prompt Defense", "C. PII / Data Masking", "D. Toxic Language Detection"],
+    answer: "C. PII / Data Masking",
+    explanation: "Data Masking replaces sensitive values with generic placeholders (e.g. [CREDIT_CARD_NUMBER]) before the LLM processes the prompt. Zero Data Retention = LLM won't store data (but still receives it). Prompt Defense = blocks jailbreaking attempts. Toxic Language Detection = scans AI output for harmful content."
+  },
+  {
+    category: "MCQ",
+    topic: "Agentforce",
+    question: "An HR manager wants to deploy an AI agent so internal employees can ask about company benefits, check their time-off balance, and submit IT helpdesk tickets in natural language. Which Agentforce agent type is best suited?",
+    options: ["A. Agentforce SDR", "B. Agentforce Sales Coach", "C. Agentforce Employee Agent", "D. Agentforce Service Agent"],
+    answer: "C. Agentforce Employee Agent",
+    explanation: "The Employee Agent is designed for internal staff productivity — HR inquiries, IT helpdesk tickets, and general administrative tasks via Slack or Salesforce. Service Agent = external customer support. Sales Coach = sales rep training. SDR = external lead engagement."
+  },
+
   // ── SSO, MFA, PATH, IN-APP GUIDANCE ──────────────────────────
   {
     category: "Concepts",
