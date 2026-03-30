@@ -6,7 +6,6 @@
   <title>Platform Administrator Exam Prep | ADM-201</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="Assets/trailhead.png">
-  <link rel="icon" href="Assets/ADM-badge.png">
 </head>
 <body>
 
@@ -69,6 +68,7 @@
       </div>
       <div class="topics-grid">
 
+        <!-- CONFIGURATION & SETUP -->
         <div class="topic-card" onclick="toggleTopic('config')">
           <div class="topic-header">
             <div class="topic-icon"><img src="Assets/trailhead.png" alt=""></div>
@@ -94,9 +94,10 @@
                 <h4>Licenses</h4>
                 <ul>
                   <li><strong>User License</strong> — baseline features, every user must have one</li>
-                  <li><strong>Feature License</strong> — grants additional features (e.g. Marketing User)</li>
+                  <li><strong>Feature License</strong> — grants additional features (e.g. Marketing User, Service Cloud User)</li>
                   <li><strong>Permission Set License</strong> — gradually grants features not in user license</li>
                 </ul>
+                <p class="note">Service Cloud User = feature license; required for Service Console, Omni-Channel, Entitlements. Assign/remove on the user record.</p>
                 <h4>Currency</h4>
                 <ul>
                   <li>Multi-Currency must be enabled; <span class="warn">CANNOT be reversed</span></li>
@@ -120,6 +121,7 @@
                   <li>Permission Set = supplemental access granted on top of profile</li>
                   <li><span class="warn">Permission Sets can ONLY grant — never restrict below profile level</span></li>
                   <li>Best practice: minimal profile + targeted permission sets</li>
+                  <li><strong>Muting Permission Set</strong> = removes access within a Permission Set Group only</li>
                 </ul>
               </div>
               <div>
@@ -137,11 +139,13 @@
                   <li><strong>Freeze</strong> = blocks login, keeps license | <strong>Deactivate</strong> = blocks login + frees license</li>
                   <li>Login History: 20,000 records, last 6 months</li>
                   <li>Trusted IP Ranges bypass Device Activation prompts</li>
+                  <li><strong>Create Multiple Users</strong> — bulk user creation via CSV (Setup → Users)</li>
+                  <li><strong>Mass Transfer</strong> — reassign owned records when a user leaves (works for Accounts, Leads, etc.)</li>
                 </ul>
                 <h4>Security Health Check</h4>
                 <ul>
-                  <li>Setup → Security → Health Check</li>
-                  <li>Scores: 90–100% Excellent | 80–89% Good | 70–79% Fair | Below 70% Poor</li>
+                  <li>Found at: Setup → Security → Health Check</li>
+                  <li>Scores: <strong>90–100%</strong> Excellent | <strong>80–89%</strong> Good | <strong>70–79%</strong> Fair | <strong>Below 70%</strong> Poor</li>
                   <li>Risk categories: <strong>High, Medium, Low, Informational</strong> (Informational = not scored)</li>
                   <li>Compare against <strong>Salesforce Standard Baseline</strong> or upload a <strong>Custom Baseline (.xml)</strong></li>
                   <li>Has inline <strong>"Fix It" buttons</strong> to resolve issues directly from the page</li>
@@ -151,14 +155,15 @@
                 <ul>
                   <li><strong>Admin Login as Any User</strong> — enabled via Setup → Login Access Policies; logs to Setup Audit Trail</li>
                   <li><strong>Grant Login Access</strong> — users voluntarily grant access to Salesforce Support or admins (User Settings → Grant Account Login Access)</li>
-                  <li>Access can be granted for durations: 1 day, 3 days, 1 week, 1 month</li>
+                  <li>Access durations: 1 day, 3 days, 1 week, 1 month</li>
+                  <li><span class="warn">Admins CANNOT see or receive MFA verification codes</span></li>
                 </ul>
                 <h4>Login Hours &amp; IP Restrictions</h4>
                 <table class="mini-table">
                   <tr><th>Setting</th><th>Location</th><th>Effect if outside range</th></tr>
                   <tr><td>Profile Login Hours</td><td>Profile → Login Hours</td><td>✅ Login <strong>completely denied</strong></td></tr>
                   <tr><td>Profile IP Restrictions</td><td>Profile → Login IP Ranges</td><td>✅ Login <strong>completely denied</strong></td></tr>
-                  <tr><td>Org-wide IP (Trusted IP Ranges)</td><td>Setup → Network Access</td><td>⚠️ <strong>Verification only</strong> (MFA/code) — NOT blocked</td></tr>
+                  <tr><td>Org-wide Trusted IP Ranges</td><td>Setup → Network Access</td><td>⚠️ <strong>Verification only</strong> (MFA/code) — NOT blocked</td></tr>
                   <tr><td>Org-wide Login Hours</td><td><span class="warn">Does not exist</span></td><td>❌ Not a feature</td></tr>
                 </table>
                 <ul>
@@ -179,6 +184,7 @@
                 <ul>
                   <li><span class="warn">App Manager ≠ App Builder</span> — App Manager configures the app container; App Builder designs individual pages</li>
                   <li>App Page is assigned to an App, Profile, or Record Type in App Builder</li>
+                  <li>Apps fall under <strong>Configuration &amp; Setup</strong> (not Object Manager)</li>
                 </ul>
               </div>
               <div>
@@ -192,6 +198,19 @@
                   <li>Request can be <strong>cancelled before deploying</strong> (click "Cancel New Domain")</li>
                   <li>Orgs created Winter '21+ have My Domain enabled by default</li>
                 </ul>
+                <h4>Session Settings / Auto Logout</h4>
+                <ul>
+                  <li>Found at: Setup → Session Settings</li>
+                  <li>Controls inactivity timeout (e.g. 15 min, 30 min, 1 hr, 24 hrs)</li>
+                  <li>Only System Administrators can configure; all users must obey</li>
+                </ul>
+                <h4>Password Policies</h4>
+                <ul>
+                  <li>Found at: Setup → Password Policies</li>
+                  <li>Controls: complexity, history, length, lockout, expiration</li>
+                  <li>Password length: <strong>5–50 characters</strong> (not 3–100)</li>
+                  <li>Only admins can set; users cannot override</li>
+                </ul>
               </div>
             </div>
           <div class="topic-images">
@@ -203,6 +222,7 @@
           </div>
         </div>
 
+        <!-- OBJECT MANAGER -->
         <div class="topic-card" onclick="toggleTopic('objmgr')">
           <div class="topic-header">
             <div class="topic-icon"><img src="Assets/trailhead.png" alt=""></div>
@@ -218,6 +238,12 @@
           <div class="topic-body" id="body-objmgr">
             <div class="topic-grid-2">
               <div>
+                <h4>Standard vs Custom Objects</h4>
+                <ul>
+                  <li><strong>Standard Objects</strong> — built-in (Account, Contact, Lead, Opportunity, Case, Campaign)</li>
+                  <li><strong>Custom Objects</strong> — admin-created, end with <code>__c</code> (e.g. Candidate__c)</li>
+                  <li>Lookups &amp; related lists = two ways relationships appear in the UI</li>
+                </ul>
                 <h4>Relationship Types</h4>
                 <table class="mini-table">
                   <tr><th></th><th>Lookup</th><th>Master-Detail</th></tr>
@@ -226,17 +252,26 @@
                   <tr><td>Own sharing rules?</td><td>✅ Yes</td><td>❌ Inherits</td></tr>
                   <tr><td>Roll-Up Summary?</td><td>❌ No</td><td>✅ Yes</td></tr>
                 </table>
+                <p class="note">When to use: Need roll-up → Master-Detail. Child optional → Lookup. Different owners → Lookup. Strict parent-child → Master-Detail.</p>
                 <h4>Special Relationships</h4>
                 <ul>
                   <li><strong>Hierarchical</strong> — Only on User object (e.g. Manager field)</li>
                   <li><strong>Self Relationship</strong> — Lookup to same object (e.g. Parent Account)</li>
                   <li><strong>Many-to-Many</strong> — Junction Object with two Master-Details</li>
                 </ul>
-                <h4>Roll-Up Summary</h4>
+                <h4>Formula vs Cross-Object vs Roll-Up</h4>
+                <table class="mini-table">
+                  <tr><th>Scenario</th><th>Use</th></tr>
+                  <tr><td>Calculate between fields on the SAME record</td><td>Formula Field</td></tr>
+                  <tr><td>Pull a field value from a PARENT record</td><td>Cross-Object Formula</td></tr>
+                  <tr><td>Aggregate MULTIPLE child records (SUM, COUNT, MIN, MAX)</td><td>Roll-Up Summary</td></tr>
+                </table>
                 <ul>
-                  <li>Created on Master (Parent), aggregates Detail (Child) records</li>
-                  <li>Functions: <strong>COUNT, SUM, MIN, MAX</strong></li>
-                  <li>Master-Detail relationship REQUIRED</li>
+                  <li>Roll-Up Summary requires <strong>Master-Detail</strong> — not available on Lookup</li>
+                  <li>Roll-Up Summary is <strong>its own field type</strong>, NOT a formula</li>
+                  <li>If no relationship is mentioned in the question → Roll-Up is almost always wrong</li>
+                  <li>Validation Rules use formula syntax but are <strong>NOT formula fields</strong></li>
+                  <li>Multi-Select Picklist fields <span class="warn">cannot be used</span> in Roll-Up Summary or Formula fields</li>
                 </ul>
               </div>
               <div>
@@ -245,6 +280,7 @@
                   <li>Controls: picklist values, page layouts, business processes</li>
                   <li>Assigned to Profiles (not roles)</li>
                   <li><span class="warn">Does NOT affect sharing settings</span></li>
+                  <li>Record Type = <em>what kind</em> of record | Page Layout = <em>how it looks</em></li>
                 </ul>
                 <h4>Business Processes (LOCS)</h4>
                 <ul>
@@ -252,31 +288,30 @@
                   <li><strong>Lead Process</strong> → Lead (Status)</li>
                   <li><strong>Support Process</strong> → Case (Status)</li>
                   <li><strong>Solution Process</strong> → Solution (Status)</li>
-                </ul>
-                <h4>Path</h4>
-                <ul>
-                  <li>Visual stage guidance bar — Lightning only</li>
-                  <li>Based on any picklist field</li>
-                  <li>Must be added to page via Lightning App Builder</li>
-                </ul>
-                <h4>Picklists</h4>
-                <ul>
-                  <li><strong>Global Value Sets</strong> — defined once, reused everywhere</li>
-                  <li>Common/Reusable Picklists do NOT exist</li>
-                  <li>Master Picklist = used with Record Types only</li>
+                  <li>Business Process defines <em>allowed stages</em> → Record Type assigns it → Path shows it visually</li>
                 </ul>
                 <h4>Picklist Types</h4>
                 <ul>
                   <li><strong>Standard Picklist</strong> — single selection</li>
                   <li><strong>Multi-Select Picklist</strong> — multiple values stored with semicolons; <span class="warn">NOT supported in formulas, rollups, or reports</span></li>
                   <li><strong>Dependent Picklist</strong> — values filtered by a controlling field</li>
+                  <li><strong>Global Value Sets</strong> — defined once, reused across multiple objects</li>
                 </ul>
                 <h4>Dependent Picklists</h4>
                 <ul>
                   <li><strong>Controlling field</strong> = determines which values appear in dependent picklist</li>
                   <li>Controlling field must be a <strong>Picklist</strong> or <strong>Checkbox</strong></li>
                   <li>Example: Country (controlling) → State (dependent)</li>
-                  <li><span class="warn">Controlling field ≠ Controlled by Parent</span> — completely different concepts (fields vs record access)</li>
+                  <li><span class="warn">Controlling field ≠ Controlled by Parent</span> — completely different concepts</li>
+                </ul>
+                <h4>Path</h4>
+                <ul>
+                  <li>Visual stage guidance bar — Lightning only</li>
+                  <li>Based on any picklist field (tied to Business Process + Record Type)</li>
+                  <li>Shows: current stage, key fields, guidance text</li>
+                  <li><strong>Does NOT enforce logic</strong> — visual guidance only</li>
+                  <li>Must be added to page via Lightning App Builder</li>
+                  <li>"Sales Path" = Path used on Opportunity — same feature, different name</li>
                 </ul>
               </div>
             </div>
@@ -296,40 +331,15 @@
                   <li>Apply <strong>visibility rules</strong> per field or section (e.g. show only when Status = Active)</li>
                   <li>Available on <strong>custom objects</strong>; limited standard object support</li>
                   <li>Configured in Lightning App Builder — not Object Manager</li>
+                  <li>Keyword: "field visibility without multiple page layouts" → Dynamic Forms</li>
                 </ul>
-              </div>
-              <div>
-                <h4>Field Types — Key Distinctions</h4>
+                <h4>Validation Rules</h4>
                 <ul>
-                  <li><strong>Formula</strong> — Read-only, calculated at runtime, cross-object lookups allowed</li>
-                  <li><strong>Roll-Up Summary</strong> — On Master only; aggregates child records (COUNT / SUM / MIN / MAX)</li>
-                  <li><strong>Validation Rule</strong> — Prevents save when formula = TRUE; runs on API &amp; Flow too</li>
-                  <li><span class="warn">Required on Page Layout ≠ Required at database level</span></li>
-                  <li>Field-level Required (via FLS/Profile) = enforced on ALL saves from any interface</li>
-                </ul>
-                <h4>What can each tool control?</h4>
-                <table class="mini-table">
-                  <tr><th>Tool</th><th>Can control</th></tr>
-                  <tr><td>Page Layout</td><td>Fields visible, required*, buttons, related lists</td></tr>
-                  <tr><td>Lightning App Builder</td><td>Components, dynamic visibility, tabs, sidebar</td></tr>
-                  <tr><td>Object Manager</td><td>Fields, relationships, validation rules, record types</td></tr>
-                </table>
-              </div>
-            </div>
-            <div class="topic-grid-2" style="margin-top:1rem">
-              <div>
-                <h4>Formula / Cross-Object / Roll-Up — Decision Tree</h4>
-                <table class="mini-table">
-                  <tr><th>Scenario</th><th>Use</th></tr>
-                  <tr><td>Calculate between fields on the SAME record</td><td>Formula Field</td></tr>
-                  <tr><td>Pull a field value from a PARENT record</td><td>Cross-Object Formula</td></tr>
-                  <tr><td>Aggregate MULTIPLE child records (SUM, COUNT, MIN, MAX)</td><td>Roll-Up Summary</td></tr>
-                </table>
-                <ul>
-                  <li>Roll-Up Summary requires <strong>Master-Detail</strong> relationship — not available on Lookup</li>
-                  <li>Roll-Up Summary is <strong>not a formula</strong> — it is its own field type</li>
-                  <li>Validation Rules use formula syntax but are <strong>not Formula Fields</strong></li>
-                  <li>Multi-Select Picklist fields <span class="warn">cannot be used</span> in Roll-Up Summary or Formula fields</li>
+                  <li>Prevent bad data from being saved</li>
+                  <li>Run when formula evaluates to TRUE → record blocked</li>
+                  <li>Common functions: <strong>ISCHANGED()</strong>, <strong>PRIORVALUE()</strong>, <strong>ISBLANK()</strong>, AND(), OR(), NOT()</li>
+                  <li>Run on API &amp; Flow too (not just UI)</li>
+                  <li>Uses formula syntax but is <strong>NOT a Formula Field</strong></li>
                 </ul>
               </div>
               <div>
@@ -338,7 +348,7 @@
                   <li>Tracks old value, new value, who changed it, and when</li>
                   <li>Max <strong>20 fields</strong> per object</li>
                   <li>Retention: <strong>18 months</strong> in UI | <strong>24 months</strong> via API</li>
-                  <li>Enable per object in Setup → Object Manager → [Object] → Fields → Set History Tracking</li>
+                  <li>Enable per object: Object Manager → [Object] → Fields → Set History Tracking</li>
                 </ul>
                 <h4>List View Layout vs Search Layout</h4>
                 <table class="mini-table">
@@ -347,6 +357,15 @@
                   <tr><td>Configured in</td><td>Object Manager</td><td>Object Manager</td></tr>
                   <tr><td>Exam keyword</td><td>"columns in a list view"</td><td>"search results" / "lookup popup"</td></tr>
                 </table>
+                <p class="note">Both live in Object Manager but are tested under Configuration concepts on the exam.</p>
+                <h4>Field Types — Key Distinctions</h4>
+                <ul>
+                  <li><strong>Formula</strong> — Read-only, calculated at runtime, cross-object lookups allowed</li>
+                  <li><strong>Roll-Up Summary</strong> — On Master only; aggregates child records (COUNT / SUM / MIN / MAX)</li>
+                  <li><strong>Validation Rule</strong> — Prevents save when formula = TRUE</li>
+                  <li><span class="warn">Required on Page Layout ≠ Required at database level</span></li>
+                  <li>Field-level Required (via FLS/Profile) = enforced on ALL saves</li>
+                </ul>
               </div>
             </div>
           <div class="topic-images">
@@ -358,6 +377,7 @@
           </div>
         </div>
 
+        <!-- AUTOMATION -->
         <div class="topic-card" onclick="toggleTopic('automation')">
           <div class="topic-header">
             <div class="topic-icon"><img src="Assets/trailhead.png" alt=""></div>
@@ -391,21 +411,36 @@
                   <div class="exec-arrow">↓</div>
                   <div class="exec-step">Escalation Rules</div>
                 </div>
+                <p class="note">Before-Save flows run faster (no DML needed). Validation Rules always run first.</p>
+                <h4>Flow vs Flow Builder vs Workflow</h4>
+                <table class="mini-table">
+                  <tr><th>Term</th><th>What it is</th></tr>
+                  <tr><td>Flow</td><td>The automation itself (the logic)</td></tr>
+                  <tr><td>Flow Builder</td><td>The tool/editor used to build flows</td></tr>
+                  <tr><td>Workflow Rules</td><td>Legacy automation — being retired, replaced by Flow</td></tr>
+                </table>
               </div>
               <div>
                 <h4>Flow Types</h4>
                 <ul>
                   <li><strong>Screen Flow</strong> — UI for data entry (uses Screen element)</li>
-                  <li><strong>Record-Triggered</strong> — Runs on create/update/delete</li>
-                  <li><strong>Schedule-Triggered</strong> — Runs at a set date/time</li>
-                  <li><strong>Auto-Launched</strong> — Called from other automation</li>
+                  <li><strong>Record-Triggered</strong> — Runs on create/update; <span class="warn">does NOT run on delete</span></li>
+                  <li><strong>Schedule-Triggered</strong> — Runs at a set date/time (replaces time-based workflow)</li>
+                  <li><strong>Auto-Launched</strong> — Called from other automation (no UI)</li>
                 </ul>
                 <h4>Key Flow Facts</h4>
                 <ul>
                   <li><strong>Screen</strong> element = collects user input (has UI)</li>
                   <li><strong>Assignment</strong> element = sets variables (no UI)</li>
-                  <li>Activating a flow does NOT retroactively process existing records</li>
-                  <li>Workflow Rules and Process Builder reached end-of-support in December 2025 — Flow is the only supported automation tool</li>
+                  <li>Activating a flow does <strong>NOT</strong> retroactively process existing records</li>
+                  <li>Workflow Rules and Process Builder retired December 2025 — Flow is the only supported automation tool</li>
+                  <li>Keyword "without code" / "declarative" → Flow</li>
+                </ul>
+                <h4>Flow Debug — Tricky Facts</h4>
+                <ul>
+                  <li>Active flows (screen, record-triggered, scheduled, auto-launched) <strong>save failed interviews</strong> and send a debug link in the error email</li>
+                  <li><span class="warn">Platform Event–triggered flows do NOT save failed interviews</span> → no debug link</li>
+                  <li>Flows with status <strong>Draft or InvalidDraft</strong> also do NOT save failed interviews</li>
                 </ul>
                 <h4>Auto-Response Rules</h4>
                 <ul>
@@ -414,21 +449,16 @@
                 </ul>
                 <h4>Escalation Rules</h4>
                 <ul>
+                  <li>Escalate cases if SLA/time exceeded</li>
                   <li>Can reassign or notify up to 5 email addresses</li>
                   <li>Time calculated using <strong>Business Hours</strong></li>
                 </ul>
                 <h4>Approval Process</h4>
                 <ul>
                   <li>Submits a record for formal approval — routes to approvers, locks the record</li>
-                  <li>Includes: Entry criteria, Approval steps, Initial/Final/Rejection actions</li>
+                  <li>Components: Entry Criteria → Approval Steps → Initial/Approval/Rejection Actions</li>
                   <li>Can: lock records, send email alerts, update fields, create tasks</li>
                   <li>Keyword cues: "manager sign-off", "formal approval", "record lock" → Approval Process</li>
-                </ul>
-                <h4>Flow Debug — Tricky Facts</h4>
-                <ul>
-                  <li>Active flows (screen, record-triggered, scheduled, auto-launched) <strong>save failed interviews</strong> and send a debug link in the error email</li>
-                  <li><span class="warn">Platform Event–triggered flows do NOT save failed interviews</span> → no debug link in email</li>
-                  <li>Flows with status <strong>Draft or InvalidDraft</strong> also do NOT save failed interviews</li>
                 </ul>
               </div>
             </div>
@@ -439,6 +469,7 @@
           </div>
         </div>
 
+        <!-- DATA & ANALYTICS -->
         <div class="topic-card" onclick="toggleTopic('data')">
           <div class="topic-header">
             <div class="topic-icon"><img src="Assets/trailhead.png" alt=""></div>
@@ -459,9 +490,11 @@
                   <tr><th></th><th>Import Wizard</th><th>Data Loader</th></tr>
                   <tr><td>Max records</td><td>50,000</td><td>150 million</td></tr>
                   <tr><td>Users</td><td>Admins + End Users</td><td>Admins only</td></tr>
-                  <tr><td>Access</td><td>Setup (browser)</td><td>Desktop app</td></tr>
+                  <tr><td>Access</td><td>Setup (browser)</td><td>Desktop app / CLI</td></tr>
                   <tr><td>Hard Delete</td><td>❌ No</td><td>✅ Yes</td></tr>
                   <tr><td>All objects</td><td>❌ Limited</td><td>✅ Yes</td></tr>
+                  <tr><td>Export</td><td>❌ No</td><td>✅ Yes</td></tr>
+                  <tr><td>Recover deleted</td><td>❌ No</td><td>✅ Yes (Recycle Bin)</td></tr>
                 </table>
                 <h4>Key Import Facts</h4>
                 <ul>
@@ -469,6 +502,15 @@
                   <li><strong>Hard Delete</strong> = bypasses Recycle Bin (requires 'Use Bulk API')</li>
                   <li>External ID field type: Text, Number, or Email only</li>
                   <li>Recycle Bin auto-deletes after <strong>15 days</strong></li>
+                  <li>Data Loader supports command-line interface (CLI) — exam questions do appear about this</li>
+                </ul>
+                <h4>Data Export (Backup)</h4>
+                <ul>
+                  <li>Found at: Setup → Data Export</li>
+                  <li>Weekly or monthly scheduled exports → ZIP files</li>
+                  <li>Exports ALL org data for backup/compliance</li>
+                  <li><span class="warn">Cannot import, update, or restore data directly</span></li>
+                  <li>Use case: backup, disaster recovery, compliance audit</li>
                 </ul>
               </div>
               <div>
@@ -479,19 +521,19 @@
                   <li><strong>Matrix</strong> — Row AND column groupings</li>
                   <li><strong>Joined</strong> — Multiple blocks, different objects</li>
                 </ul>
-                <p class="note">Formats adapt automatically — not manually selected</p>
+                <p class="note">Formats adapt automatically — not manually selected. Joined Reports always export as <strong>.xlsx</strong>.</p>
                 <h4>Report Tools</h4>
                 <ul>
                   <li><strong>Bucket Fields</strong> — Group values. Max 5 per report, 20 buckets each</li>
                   <li><strong>Cross Filter</strong> — Records WITH or WITHOUT child records</li>
                   <li><strong>Row-Level Formula</strong> — Only 1 per report</li>
-                  <li><strong>Conditional Highlighting</strong> — Colour-codes summarised values</li>
+                  <li><strong>Conditional Highlighting</strong> — Colour-codes summarised values (Summary/Matrix only)</li>
                 </ul>
                 <h4>Dashboards</h4>
                 <ul>
                   <li><strong>Running User</strong> — Whose security context is used for data display</li>
                   <li>Refresh: Manual, Daily, Weekly, or Monthly</li>
-                  <li>Joined Reports always export as <strong>.xlsx</strong></li>
+                  <li>Report Chart = visual from a report (not the same as a Dashboard component)</li>
                 </ul>
               </div>
             </div>
@@ -502,6 +544,7 @@
           </div>
         </div>
 
+        <!-- SECURITY & SHARING -->
         <div class="topic-card" onclick="toggleTopic('security')">
           <div class="topic-header">
             <div class="topic-icon"><img src="Assets/trailhead.png" alt=""></div>
@@ -525,41 +568,16 @@
                   <div class="layer layer-4">Sharing Rules<br><small>Horizontal: Exceptions to OWD for groups</small></div>
                   <div class="layer layer-5">Manual Sharing / Teams<br><small>Individual record exceptions</small></div>
                 </div>
-              </div>
-              <div>
+                <p class="note"><strong>Vertical</strong> = hierarchy (up/down org chart). <strong>Horizontal</strong> = across users at the same level.</p>
                 <h4>OWD Settings</h4>
                 <ul>
                   <li><strong>Private</strong> — Users see only records they own</li>
                   <li><strong>Public Read Only</strong> — All can see, only owners can edit</li>
                   <li><strong>Public Read/Write</strong> — All can see and edit</li>
-                  <li><strong>Controlled by Parent</strong> — Child record access inherits from parent record (common for Contact → Account, Case → Account)</li>
+                  <li><strong>Controlled by Parent</strong> — Child record access inherits from parent record (e.g. Contact → Account)</li>
                   <li><span class="warn">Sharing Rules can NEVER be more restrictive than OWD</span></li>
                   <li>"Users need access to child records based on parent ownership" → <strong>Controlled by Parent</strong></li>
                 </ul>
-                <h4>Public Groups Can Include</h4>
-                <ul>
-                  <li>Can include: Users, Roles, Territories, Other Public Groups</li>
-                  <li>Cannot include: Profiles, Permission Sets</li>
-                </ul>
-                <h4>Key Access Principles</h4>
-                <ul>
-                  <li>Profile = object access (CAN they see Accounts?)</li>
-                  <li>OWD + Role Hierarchy = record access (WHICH accounts?)</li>
-                  <li>FLS controls field-level visibility and editability</li>
-                  <li>Record Types do <span class="warn">NOT</span> affect sharing</li>
-                </ul>
-                <h4>Public Groups</h4>
-                <ul>
-                  <li>Can include: Users, Roles, Roles + Subordinates, Other Public Groups, Territories</li>
-                  <li>Cannot include: Profiles, Permission Sets</li>
-                  <li>Max <strong>2,000 members</strong> per group</li>
-                  <li>Used for: Sharing Rules, Queue membership, Folder access</li>
-                  <li>A Public Group can contain roles but is <span class="warn">NOT</span> itself a role</li>
-                </ul>
-              </div>
-            </div>
-            <div class="topic-grid-2" style="margin-top:1rem">
-              <div>
                 <h4>Exceptions to OWD Private — What Can Open Access?</h4>
                 <table class="mini-table">
                   <tr><th>Mechanism</th><th>Opens Access?</th><th>Notes</th></tr>
@@ -567,12 +585,9 @@
                   <tr><td>Sharing Rules</td><td>✅ Yes</td><td>Owner-based or criteria-based</td></tr>
                   <tr><td>Manual Sharing</td><td>✅ Yes</td><td>One-off record exceptions</td></tr>
                   <tr><td>Account/Opp Teams</td><td>✅ Yes</td><td>Grant Read or Read/Write per record</td></tr>
-                  <tr><td>Apex Managed Sharing</td><td>✅ Yes</td><td>Programmatic sharing for complex rules</td></tr>
+                  <tr><td>Apex Managed Sharing</td><td>✅ Yes</td><td>Programmatic sharing</td></tr>
                   <tr><td>Profile/Permission Sets</td><td>❌ No</td><td>Object/field access only — not records</td></tr>
                 </table>
-                <ul>
-                  <li><span class="warn">Sharing mechanisms can ONLY open access — never restrict below OWD</span></li>
-                </ul>
               </div>
               <div>
                 <h4>Object Permissions vs Field-Level Security</h4>
@@ -583,10 +598,17 @@
                   <tr><td>If blocked</td><td>User sees nothing on the object</td><td>User can't see/edit that field</td></tr>
                 </table>
                 <ul>
-                  <li>Both apply to the same record — at different "depths"</li>
-                  <li>Object permission = the folder | FLS = documents inside the folder</li>
-                  <li><span class="warn">FLS can restrict fields but cannot override object permissions</span></li>
-                  <li>FLS does NOT hide a tab — tab visibility is controlled by object permissions + tab settings in Profile</li>
+                  <li>FLS can restrict fields but <strong>cannot override object permissions</strong></li>
+                  <li>FLS does NOT hide a tab — tab visibility = object permissions + tab settings in Profile</li>
+                  <li>Tab not visible? Check: tab added to app ✔ object permissions ✔ tab visibility in profile ✔</li>
+                </ul>
+                <h4>Public Groups</h4>
+                <ul>
+                  <li>Can include: Users, Roles, Roles + Subordinates, Other Public Groups, Territories</li>
+                  <li><span class="warn">Cannot include: Profiles, Permission Sets</span></li>
+                  <li>Max <strong>2,000 members</strong> per group</li>
+                  <li>Used for: Sharing Rules, Queue membership, Folder access</li>
+                  <li>A Public Group can contain roles but is <span class="warn">NOT</span> itself a role</li>
                 </ul>
                 <h4>Teams: Which Actually Grant Record Access?</h4>
                 <table class="mini-table">
@@ -619,6 +641,7 @@
           </div>
         </div>
 
+        <!-- SALES & MARKETING -->
         <div class="topic-card" onclick="toggleTopic('sales')">
           <div class="topic-header">
             <div class="topic-icon"><img src="Assets/trailhead.png" alt=""></div>
@@ -643,9 +666,15 @@
                 <p class="note">Opportunity name is auto-generated. Owner can be selected before conversion.</p>
                 <h4>Lead Management</h4>
                 <ul>
-                  <li><strong>Web-to-Lead</strong> — HTML form captures leads from website. Validation rules run first.</li>
-                  <li><strong>Assignment Rules</strong> — Auto-assign leads and cases to users/queues</li>
+                  <li><strong>Web-to-Lead</strong> — HTML form captures leads from website. Max 500 per day. Validation rules run first.</li>
+                  <li><strong>Assignment Rules</strong> — Auto-assign leads and cases to users/queues (criteria-based)</li>
                   <li><strong>Auto-Response Rules</strong> — Emails the lead/customer, not the owner</li>
+                </ul>
+                <h4>Contacts to Multiple Accounts</h4>
+                <ul>
+                  <li>One Contact can relate to multiple Accounts (B2B relationships)</li>
+                  <li>Uses the <strong>Account Contact Relationship</strong> object</li>
+                  <li>One Account is the Primary (direct) relationship</li>
                 </ul>
               </div>
               <div>
@@ -654,12 +683,12 @@
                   <li>Track marketing efforts and ROI</li>
                   <li>Support parent/child hierarchies</li>
                   <li>Campaign Members are Contacts or Leads added to a campaign</li>
+                  <li>Feature license: Marketing User required to manage campaigns</li>
                 </ul>
                 <h4>Opportunity Pipeline</h4>
                 <ul>
                   <li><strong>Sales Process</strong> — Defines which Stage values are available (via Record Types)</li>
-                  <li><strong>Pipeline Inspection</strong> — KPI metrics + Einstein Deal Insights + filters</li>
-                  <li><strong>Opportunity Teams</strong> — Multiple users with defined roles per opportunity</li>
+                  <li><strong>Opportunity Teams</strong> — Multiple users with defined roles per opportunity; grants record access</li>
                   <li><strong>Forecast Categories</strong> — Pipeline, Best Case, Commit, Closed, Omitted</li>
                 </ul>
               </div>
@@ -670,6 +699,7 @@
           </div>
         </div>
 
+        <!-- SERVICE & SUPPORT -->
         <div class="topic-card" onclick="toggleTopic('service')">
           <div class="topic-header">
             <div class="topic-icon"><img src="Assets/trailhead.png" alt=""></div>
@@ -689,15 +719,30 @@
                 <ul>
                   <li>Manual entry in CRM</li>
                   <li><strong>Email-to-Case</strong> — From customer support emails. Multiple routing addresses.</li>
-                  <li><strong>Web-to-Case</strong> — HTML form on company website. reCAPTCHA available.</li>
+                  <li><strong>Web-to-Case</strong> — HTML form on company website. reCAPTCHA available. Max 5,000/day.</li>
                   <li><strong>Auto-Response Rules</strong> — Emails the <span class="warn">CUSTOMER</span>, not the owner</li>
                 </ul>
+                <h4>Case Lifecycle (End-to-End)</h4>
+                <ol>
+                  <li>Case created (Email/Web/Phone)</li>
+                  <li>Auto-Response Rule → confirmation email to customer</li>
+                  <li>Assignment Rule → case routed to User or Queue</li>
+                  <li>Agent works case; Path shows status; Chatter for collaboration</li>
+                  <li>Escalation Rule → triggers if SLA breached</li>
+                  <li>Case closed; metrics tracked in reports</li>
+                </ol>
                 <h4>Queues</h4>
                 <ul>
-                  <li>Holding place for unassigned cases</li>
+                  <li>Shared holding area for unassigned records (Cases, Leads, custom objects)</li>
                   <li>Members: users, roles, or public groups</li>
                   <li>Creating a queue <strong>automatically creates a list view</strong></li>
-                  <li>Members click 'Accept' to self-assign</li>
+                  <li>Members click 'Accept' to self-assign from the queue</li>
+                </ul>
+                <h4>Case Contact Roles</h4>
+                <ul>
+                  <li>Associate <strong>multiple Contacts</strong> with one Case</li>
+                  <li>Define each contact's role (e.g. Decision Maker, Technical Contact)</li>
+                  <li>Keyword: "multiple contacts involved in a case" → <strong>Case Contact Roles</strong></li>
                 </ul>
               </div>
               <div>
@@ -705,18 +750,26 @@
                 <ul>
                   <li>Routes work to most available/qualified agents</li>
                   <li>Found in Service Console Utility Bar</li>
+                  <li>Requires <strong>Service Cloud User</strong> feature license</li>
                   <li><strong>Omni Supervisor</strong> — Monitor agent workloads in real-time</li>
                   <li>Supports: voice, chat, messaging, cases, leads, custom objects</li>
+                </ul>
+                <h4>Service Console</h4>
+                <ul>
+                  <li>Tab-based workspace for support agents (Lightning app)</li>
+                  <li>Requires <strong>Service Cloud User</strong> feature license</li>
+                  <li>Designed for handling multiple cases simultaneously</li>
                 </ul>
                 <h4>Case Teams</h4>
                 <ul>
                   <li>Collaborate on cases with defined roles</li>
                   <li>Create roles in Case Team Roles setup first</li>
                   <li>Access levels: Private, Read Only, Read/Write, Visible in Customer Portal</li>
+                  <li>Do NOT automatically grant record access (need sharing rules)</li>
                 </ul>
                 <h4>Macros</h4>
                 <ul>
-                  <li>Automate repetitive tasks in the Service Console (front-end only)</li>
+                  <li>Automate repetitive tasks in the Service Console (front-end / UI only)</li>
                   <li>For background automation: use <strong>Flow</strong></li>
                 </ul>
               </div>
@@ -729,6 +782,7 @@
           </div>
         </div>
 
+        <!-- PRODUCTIVITY & COLLABORATION -->
         <div class="topic-card" onclick="toggleTopic('productivity')">
           <div class="topic-header">
             <div class="topic-icon"><img src="Assets/trailhead.png" alt=""></div>
@@ -746,39 +800,13 @@
               <div>
                 <h4>Chatter</h4>
                 <ul>
-                  <li>Posts, files, @mentions, groups, following records</li>
-                  <li><strong>Feed Tracking</strong> — Field changes posted to Chatter feed</li>
+                  <li>Internal collaboration platform — posts, files, @mentions, groups, following records</li>
+                  <li><strong>Feed Tracking</strong> — Field changes posted to Chatter feed (must be enabled per object/field)</li>
+                  <li>Groups: Public, Private, or Unlisted; can include customers</li>
+                  <li>Chatter does <span class="warn">NOT</span> require a full Salesforce license (Chatter Free license exists)</li>
+                  <li>File size limit per post: <strong>2 GB</strong></li>
+                  <li><span class="warn">Chatter ≠ Path ≠ In-App Guidance</span> — three separate features</li>
                 </ul>
-                <h4>Activities</h4>
-                <ul>
-                  <li><strong>Tasks</strong> — To-do items related to records</li>
-                  <li><strong>Events</strong> — Calendar items with date/time</li>
-                  <li><strong>Activity Timeline</strong> — Past and upcoming activities on a record</li>
-                  <li><strong>Einstein Activity Capture</strong> — Auto-logs emails and events</li>
-                </ul>
-              </div>
-              <div>
-                <h4>AppExchange</h4>
-                <table class="mini-table">
-                  <tr><th>Type</th><th>Code Access</th><th>Upgradeable</th></tr>
-                  <tr><td>Managed</td><td>Locked</td><td>Yes (by publisher)</td></tr>
-                  <tr><td>Unmanaged</td><td>Accessible</td><td>No</td></tr>
-                </table>
-                <h4>Gmail / Outlook Integration</h4>
-                <ul>
-                  <li>Log emails to Salesforce records from Gmail or Outlook</li>
-                  <li>If EAC has emails disabled: users can still click 'Log Email' manually</li>
-                </ul>
-                <h4>Sales Dialer</h4>
-                <ul>
-                  <li>One-click calling from phone number fields</li>
-                  <li>Lightning Experience only</li>
-                  <li>Supports call recording (no extra plugin)</li>
-                </ul>
-              </div>
-            </div>
-            <div class="topic-grid-2" style="margin-top:1rem">
-              <div>
                 <h4>Tasks vs Events</h4>
                 <table class="mini-table">
                   <tr><th></th><th>Task</th><th>Event</th></tr>
@@ -788,12 +816,15 @@
                   <tr><td>Recurrence?</td><td>✅ Yes</td><td>✅ Yes</td></tr>
                   <tr><td>Multi-person</td><td>❌ One owner</td><td>✅ Invitees</td></tr>
                 </table>
-                <h4>Calendar &amp; Sharing</h4>
+                <h4>Activity Settings</h4>
                 <ul>
-                  <li>Users can share calendars with other users, roles, or public groups</li>
-                  <li>Sharing levels: <strong>Hide Details</strong>, <strong>Hide Details &amp; Add Events</strong>, <strong>Show Details</strong>, <strong>Show Details &amp; Add Events</strong>, <strong>Full Access</strong></li>
-                  <li>Shared calendars visible in the Calendar tab (Lightning only)</li>
+                  <li>"Allow Activities" must be enabled on an object before tasks/events can be related to it</li>
+                  <li><strong>Activity Timeline</strong> — shows past and upcoming activities on a record</li>
+                  <li><strong>Einstein Activity Capture (EAC)</strong> — auto-syncs emails &amp; calendar events; data stored outside Salesforce (no standard reports)</li>
+                  <li>If EAC email sync is disabled, users can still manually click <strong>Log Email</strong></li>
                 </ul>
+              </div>
+              <div>
                 <h4>Path vs In-App Guidance</h4>
                 <table class="mini-table">
                   <tr><th></th><th>Path</th><th>In-App Guidance</th></tr>
@@ -806,24 +837,22 @@
                 <ul>
                   <li><strong>Chatter</strong> = communication | <strong>Path</strong> = process stages | <strong>In-App Guidance</strong> = training/help</li>
                   <li>Path does <span class="warn">NOT</span> enforce logic — visual guidance only</li>
-                  <li>Path works on: Leads, Opportunities, Cases, Custom Objects (any picklist field)</li>
                 </ul>
-              </div>
-              <div>
-                <h4>Chatter Key Facts</h4>
-                <ul>
-                  <li><strong>Feed Tracking</strong> — Enable per object/field; posts field changes to Chatter feed</li>
-                  <li><strong>@mention</strong> — Notifies a user or group in a post</li>
-                  <li><strong>Groups</strong> — Public, Private, or Unlisted; can include customers</li>
-                  <li>Chatter does <span class="warn">NOT</span> require a full Salesforce license (Chatter Free license exists)</li>
-                  <li>File size limit per post: <strong>2 GB</strong></li>
-                </ul>
+                <h4>AppExchange</h4>
+                <table class="mini-table">
+                  <tr><th>Type</th><th>Code Access</th><th>Upgradeable</th></tr>
+                  <tr><td>Managed</td><td>Locked</td><td>Yes (by publisher)</td></tr>
+                  <tr><td>Unmanaged</td><td>Accessible</td><td>No</td></tr>
+                </table>
                 <h4>Email Integration</h4>
                 <ul>
                   <li><strong>Gmail / Outlook Integration</strong> — Log emails and events to records directly from inbox</li>
-                  <li><strong>Einstein Activity Capture (EAC)</strong> — Auto-syncs emails &amp; calendar; data stored outside Salesforce (no standard reports)</li>
+                  <li><strong>Email-to-Salesforce</strong> (BCC) — BCC a unique address to log emails</li>
                   <li>If EAC email sync is disabled, users can still manually click <strong>Log Email</strong></li>
-                  <li><strong>Email-to-Salesforce</strong> (BCC) — Alternative: BCC a unique address to log emails</li>
+                </ul>
+                <h4>Calendar &amp; Sharing</h4>
+                <ul>
+                  <li>Sharing levels: Hide Details | Hide Details &amp; Add Events | Show Details | Show Details &amp; Add Events | Full Access</li>
                 </ul>
               </div>
             </div>
@@ -833,6 +862,7 @@
           </div>
         </div>
 
+        <!-- AGENTFORCE & EINSTEIN AI -->
         <div class="topic-card" onclick="toggleTopic('agentforce')">
           <div class="topic-header">
             <div class="topic-icon"><img src="Assets/trailhead.png" alt=""></div>
@@ -848,41 +878,16 @@
           <div class="topic-body" id="body-agentforce">
             <div class="topic-grid-2">
               <div>
-                <h4>Agentforce</h4>
+                <h4>What is Agentforce?</h4>
                 <ul>
-                  <li><strong>Atlas Reasoning Engine</strong> — AI brain using ReAct (Reason + Act) prompting</li>
-                  <li><strong>Topics</strong> — Agent intents/specialties (e.g., 'Order Management')</li>
-                  <li><strong>Actions</strong> — Tools the agent uses (Flows, Apex, Prompt Templates)</li>
-                  <li><strong>Grounding</strong> — Connecting the agent to Salesforce records for context</li>
+                  <li><strong>Autonomous AI agents</strong> that execute specialised tasks proactively — not just chatbots</li>
+                  <li>Use <strong>Large Language Models (LLMs)</strong> to analyse context and decide next actions</li>
+                  <li>Work 24/7 across channels (CRM, web, messaging, Slack)</li>
+                  <li>Use <strong>Salesforce CRM data + external data (Data Cloud / Data 360)</strong></li>
+                  <li>Can escalate complex issues to <strong>human agents</strong></li>
+                  <li>Powered by the <strong>Atlas Reasoning Engine</strong> (ReAct: Reason + Act)</li>
                 </ul>
-                <h4>Einstein Trust Layer</h4>
-                <ul>
-                  <li><strong>Data Masking (PII)</strong> — Replaces sensitive data (SSNs, credit cards) with placeholders <em>before</em> sending to LLM</li>
-                  <li><strong>Zero Data Retention</strong> — LLM provider does NOT store or train on your data (data still sent, just not retained)</li>
-                  <li><strong>Prompt Defense</strong> — Detects and blocks jailbreaking / malicious prompt injection attempts</li>
-                  <li><strong>Toxic Language Detection</strong> — Scans AI <em>output</em> to block harmful or offensive content</li>
-                  <li><strong>Audit Trail</strong> — All AI interactions logged</li>
-                </ul>
-                <ul>
-                  <li><span class="warn">Data Masking ≠ Zero Data Retention</span> — masking hides data in the prompt; retention controls whether LLM stores it</li>
-                </ul>
-              </div>
-              <div>
-                <h4>Einstein Features</h4>
-                <table class="mini-table">
-                  <tr><th>Feature</th><th>Cloud</th><th>Function</th></tr>
-                  <tr><td>Activity Capture</td><td>Sales/Service</td><td>Auto-logs emails &amp; events</td></tr>
-                  <tr><td>Lead Scoring</td><td>Sales</td><td>Predicts lead conversion</td></tr>
-                  <tr><td>Opp Scoring</td><td>Sales</td><td>Predicts Closed Won</td></tr>
-                  <tr><td>Einstein Bots</td><td>Service</td><td>AI customer chat</td></tr>
-                  <tr><td>Next Best Action</td><td>Platform</td><td>Recommends actions</td></tr>
-                  <tr><td>Prediction Builder</td><td>Platform</td><td>Admin-built AI (no code)</td></tr>
-                </table>
-              </div>
-            </div>
-            <div class="topic-grid-2" style="margin-top:1rem">
-              <div>
-                <h4>Key Components of an Agent</h4>
+                <h4>Key Components of an Agent (ROLE-K-A-G-C)</h4>
                 <ul>
                   <li><strong>Role</strong> — The agent's purpose; defines what job it does and broader goals</li>
                   <li><strong>Knowledge</strong> — Data it uses: CRM records, Knowledge Articles, external data (Data Cloud)</li>
@@ -899,6 +904,15 @@
                   <li>Follows <strong>guardrails</strong> and Einstein Trust Layer security</li>
                   <li>Escalates to a <strong>human agent</strong> if needed</li>
                 </ol>
+                <h4>Einstein Trust Layer</h4>
+                <ul>
+                  <li><strong>Data Masking (PII)</strong> — Replaces sensitive data before sending to LLM</li>
+                  <li><strong>Zero Data Retention</strong> — LLM does NOT store or train on your data</li>
+                  <li><strong>Prompt Defense</strong> — Detects and blocks jailbreaking / prompt injection</li>
+                  <li><strong>Toxic Language Detection</strong> — Scans AI output to block harmful content</li>
+                  <li><strong>Audit Trail</strong> — All AI interactions logged</li>
+                  <li><span class="warn">Data Masking ≠ Zero Data Retention</span> — masking hides data in prompt; retention controls whether LLM stores it</li>
+                </ul>
               </div>
               <div>
                 <h4>Reasoning Engine</h4>
@@ -917,47 +931,44 @@
                   <li><strong>Campaign Optimizer</strong> — automates full marketing campaign lifecycle</li>
                   <li><strong>Buyer Agent / Personal Shopper</strong> — ecommerce buying assistance</li>
                   <li><strong>Merchandiser</strong> — assists ecommerce site setup and promotions</li>
-                  <li><strong>Employee Agent</strong> — internal staff assistant: HR questions, time-off balance, IT helpdesk tickets via Slack or Salesforce</li>
+                  <li><strong>Employee Agent</strong> — internal staff assistant: HR, IT helpdesk, time-off via Slack</li>
                 </ul>
-                <h4>AI vs Traditional Automation</h4>
-                <table class="mini-table">
-                  <tr><th>Use Agentforce (AI)</th><th>Use Traditional Automation</th></tr>
-                  <tr><td>Interpret unstructured data (e.g. summarise case history)</td><td>Deterministic / compliance-critical actions (e.g. re-assign by priority)</td></tr>
-                  <tr><td>Natural language responses</td><td>Predictable, rule-based outcomes every time</td></tr>
-                  <tr><td>Context-aware reasoning</td><td>Case assignment rules, flows, validation rules</td></tr>
-                </table>
-              </div>
-            </div>
-            <div class="topic-grid-2" style="margin-top:1rem">
-              <div>
                 <h4>Testing in Agentforce Builder</h4>
                 <table class="mini-table">
                   <tr><th>Tool</th><th>When to Use</th></tr>
                   <tr><td><strong>Conversation Preview</strong></td><td>Real-time testing during development — see topic &amp; action selection live</td></tr>
                   <tr><td><strong>Agentforce Testing Center</strong></td><td>Batch testing large volumes of utterances (automated / large-scale)</td></tr>
-                  <tr><td><strong>Enhanced Event Logs</strong></td><td>Review recorded events <em>after</em> interactions occur — not real-time</td></tr>
+                  <tr><td><strong>Enhanced Event Logs</strong></td><td>Review recorded events after interactions — not real-time</td></tr>
                 </table>
                 <ul>
-                  <li><span class="warn">"Testing Preview"</span> = does <strong>NOT</strong> exist — exam trap!</li>
+                  <li><span class="warn">"Testing Preview" does NOT exist</span> — exam trap!</li>
                 </ul>
-                <img src="Assets/content-images/Conversation-preview.png" alt="Conversation Preview panel in Agentforce Builder" style="max-width:100%;border-radius:6px;margin-top:10px;border:1px solid var(--border)">
-              </div>
-              <div>
                 <h4>Agentforce &amp; User Permissions</h4>
                 <ul>
                   <li>Agentforce <strong>inherits the running user's permissions</strong> — OWD, sharing rules, and FLS all apply</li>
-                  <li>If the user <strong>cannot see</strong> a record, the agent <span class="warn">cannot retrieve it either</span></li>
-                  <li>Does <strong>NOT</strong> use a separate overriding permission set for record access</li>
-                  <li>Does <strong>NOT</strong> require "View All Data" to function</li>
-                  <li><strong>Einstein Trust Layer</strong> = data masking during LLM processing only — it does <em>not</em> control record-level access</li>
+                  <li>If the user cannot see a record, the agent <span class="warn">cannot retrieve it either</span></li>
+                  <li>Einstein Trust Layer = data masking during LLM processing only — does <em>not</em> control record-level access</li>
                 </ul>
+                <h4>AI vs Traditional Automation</h4>
                 <table class="mini-table">
-                  <tr><th>Problem</th><th>Cause</th><th>Fix</th></tr>
-                  <tr><td>Agent can't retrieve a record</td><td>User lacks sharing access (OWD/rules)</td><td>Update sharing rules or OWD</td></tr>
-                  <tr><td>Agent can't see a field</td><td>FLS restricts that field for the user</td><td>Update field-level security</td></tr>
-                  <tr><td>Sensitive data hidden from LLM</td><td>Einstein Trust Layer masking</td><td>Review Trust Layer settings</td></tr>
+                  <tr><th>Use Agentforce (AI)</th><th>Use Traditional Automation (Flow)</th></tr>
+                  <tr><td>Interpret unstructured data / summarise</td><td>Deterministic / compliance-critical actions</td></tr>
+                  <tr><td>Natural language responses</td><td>Predictable, rule-based outcomes</td></tr>
+                  <tr><td>Context-aware reasoning</td><td>Case assignment rules, validation rules</td></tr>
                 </table>
               </div>
+            </div>
+            <div style="margin-top:1rem">
+              <h4>Einstein Features</h4>
+              <table class="mini-table">
+                <tr><th>Feature</th><th>Cloud</th><th>Function</th></tr>
+                <tr><td>Activity Capture</td><td>Sales/Service</td><td>Auto-logs emails &amp; events</td></tr>
+                <tr><td>Lead Scoring</td><td>Sales</td><td>Predicts lead conversion</td></tr>
+                <tr><td>Opp Scoring</td><td>Sales</td><td>Predicts Closed Won</td></tr>
+                <tr><td>Einstein Bots</td><td>Service</td><td>AI customer chat</td></tr>
+                <tr><td>Next Best Action</td><td>Platform</td><td>Recommends actions</td></tr>
+                <tr><td>Prediction Builder</td><td>Platform</td><td>Admin-built AI (no code)</td></tr>
+              </table>
             </div>
           </div>
         </div>
@@ -1037,6 +1048,7 @@
         <p>Key facts that commonly appear in exam questions</p>
       </div>
       <div class="cheatsheet-grid">
+
         <div class="cheat-card">
           <h3>"CANNOT be reversed"</h3>
           <ul>
@@ -1044,6 +1056,7 @@
             <li>Enabling <strong>Custom Fiscal Year</strong></li>
           </ul>
         </div>
+
         <div class="cheat-card">
           <h3>Common Traps</h3>
           <ul>
@@ -1056,8 +1069,10 @@
             <li>Controlling Field (picklist dependency) ≠ Controlled by Parent (OWD)</li>
             <li>Platform Event flows do <strong>NOT</strong> save failed interview links</li>
             <li>App Manager (admin) ≠ App Launcher (end user)</li>
+            <li>FLS does <strong>NOT</strong> hide tabs — object permissions + tab settings do</li>
           </ul>
         </div>
+
         <div class="cheat-card">
           <h3>Key Limits</h3>
           <ul>
@@ -1068,9 +1083,11 @@
             <li>Bucket Fields: <strong>5</strong> per report, <strong>20</strong> buckets each</li>
             <li>External IDs: up to <strong>25</strong> per object</li>
             <li>Recycle Bin: auto-deletes after <strong>15 days</strong></li>
-            <li>Password length: <strong>5–50</strong> characters (not 3–100)</li>
+            <li>Password length: <strong>5–50</strong> characters</li>
+            <li>Public Group max members: <strong>2,000</strong></li>
           </ul>
         </div>
+
         <div class="cheat-card">
           <h3>Order of Execution</h3>
           <ol>
@@ -1084,6 +1101,7 @@
             <li>Escalation Rules</li>
           </ol>
         </div>
+
         <div class="cheat-card">
           <h3>Access Model</h3>
           <ul>
@@ -1093,28 +1111,53 @@
             <li><strong>Sharing Rules</strong> → Horizontal exceptions to OWD</li>
             <li><strong>FLS</strong> → Field-level visibility and editability</li>
           </ul>
+          <h4 style="margin-top:.5rem">Record Access Order</h4>
+          <ol>
+            <li>OWD (most restrictive baseline)</li>
+            <li>Role Hierarchy (opens up vertically)</li>
+            <li>Sharing Rules (opens up horizontally)</li>
+            <li>Manual Sharing / Teams (one-off exceptions)</li>
+          </ol>
         </div>
+
         <div class="cheat-card">
           <h3>Relationship Summary</h3>
           <ul>
             <li><strong>Lookup</strong> = loose, child optional, own sharing, no roll-up</li>
             <li><strong>Master-Detail</strong> = tight, child required, inherits sharing, roll-up enabled</li>
             <li><strong>Hierarchical</strong> = User object only</li>
-            <li><strong>Standard Object</strong> must be <strong>Master</strong> side</li>
             <li>Many-to-Many = Junction Object with 2 Master-Details</li>
+            <li>Standard Object must be <strong>Master</strong> side (if mixed)</li>
           </ul>
         </div>
+
+        <div class="cheat-card">
+          <h3>Formula vs Cross-Object vs Roll-Up</h3>
+          <table class="mini-table">
+            <tr><th>Scenario</th><th>Answer</th></tr>
+            <tr><td>Calculate between fields on same record</td><td>Formula Field</td></tr>
+            <tr><td>Pull a value from a parent record</td><td>Cross-Object Formula</td></tr>
+            <tr><td>Aggregate many child records (SUM/COUNT/MIN/MAX)</td><td>Roll-Up Summary</td></tr>
+          </table>
+          <ul>
+            <li>Roll-Up = its own field type, NOT a formula</li>
+            <li>No relationship mentioned → Roll-Up is almost always wrong</li>
+            <li>Validation Rules use formula syntax but are NOT Formula Fields</li>
+          </ul>
+        </div>
+
         <div class="cheat-card">
           <h3>Report Formats</h3>
           <ul>
             <li><strong>Tabular</strong> = no groupings</li>
             <li><strong>Summary</strong> = row groupings</li>
             <li><strong>Matrix</strong> = row + column groupings</li>
-            <li><strong>Joined</strong> = multiple blocks</li>
+            <li><strong>Joined</strong> = multiple blocks / different objects</li>
             <li>Format adapts automatically — not selected manually</li>
             <li>Joined Reports always export as <strong>.xlsx</strong></li>
           </ul>
         </div>
+
         <div class="cheat-card">
           <h3>Sandbox Types</h3>
           <table class="mini-table">
@@ -1125,124 +1168,7 @@
             <tr><td>Full</td><td>All</td><td>29 days</td></tr>
           </table>
         </div>
-        <div class="cheat-card">
-          <h3>Exam Keywords → Likely Answer</h3>
-          <table class="mini-table">
-            <tr><th>Keyword in question</th><th>Think of</th></tr>
-            <tr><td>"roll-up" / "aggregate child"</td><td>Master-Detail relationship</td></tr>
-            <tr><td>"group rows" / "subtotals"</td><td>Summary report</td></tr>
-            <tr><td>"row + column grouping"</td><td>Matrix report</td></tr>
-            <tr><td>"multiple objects, one view"</td><td>Joined report</td></tr>
-            <tr><td>"record-level access"</td><td>OWD / Sharing Rules</td></tr>
-            <tr><td>"custom UI layout" / "components"</td><td>Lightning App Builder</td></tr>
-            <tr><td>"without writing code"</td><td>Flow (not Apex)</td></tr>
-            <tr><td>"retroactive / existing records"</td><td>Flow does NOT retroact on activation</td></tr>
-            <tr><td>"email the customer"</td><td>Auto-Response Rule</td></tr>
-            <tr><td>"email the owner"</td><td>Flow / Alert action</td></tr>
-            <tr><td>"most restrictive"</td><td>OWD (org-wide default)</td></tr>
-            <tr><td>"who sees whose data" (vertical)</td><td>Role Hierarchy</td></tr>
-            <tr><td>"who sees whose data" (horizontal)</td><td>Sharing Rules</td></tr>
-            <tr><td>"bulk import / update / delete records"</td><td>Data Loader</td></tr>
-            <tr><td>"backup / scheduled org export"</td><td>Data Export Service</td></tr>
-            <tr><td>"guide users through record stages"</td><td>Path</td></tr>
-            <tr><td>"train / onboard users in the UI"</td><td>In-App Guidance</td></tr>
-            <tr><td>"one login for multiple apps"</td><td>SSO</td></tr>
-            <tr><td>"extra verification step / second factor"</td><td>MFA</td></tr>
-            <tr><td>"sum fields on same record" (non-editable)</td><td>Formula Field</td></tr>
-            <tr><td>"aggregate child records" (SUM/COUNT)</td><td>Roll-Up Summary (Master-Detail)</td></tr>
-          </table>
-        </div>
-        <div class="cheat-card">
-          <h3>Profiles vs Permission Sets</h3>
-          <ul>
-            <li><strong>Profile</strong> = every user has exactly one; sets baseline access</li>
-            <li><strong>Permission Set</strong> = optional add-on; grants additional access only</li>
-            <li>Permission Sets can <strong>NEVER restrict</strong> below profile level</li>
-            <li><strong>Permission Set Group</strong> = bundle multiple PSets together</li>
-            <li>Muting Permission Set = <em>removes</em> access within a PSGroup only</li>
-          </ul>
-          <h4 style="margin-top:.5rem">Record Access Order</h4>
-          <ol>
-            <li>OWD (most restrictive baseline)</li>
-            <li>Role Hierarchy (opens up vertically)</li>
-            <li>Sharing Rules (opens up horizontally)</li>
-            <li>Manual Sharing / Teams (one-off exceptions)</li>
-          </ol>
-        </div>
-        <div class="cheat-card">
-          <h3>Formula vs Cross-Object vs Roll-Up</h3>
-          <table class="mini-table">
-            <tr><th>Scenario</th><th>Answer</th></tr>
-            <tr><td>Calculate between fields on same record</td><td>Formula Field</td></tr>
-            <tr><td>Pull a value from a parent record</td><td>Cross-Object Formula</td></tr>
-            <tr><td>Aggregate many child records (SUM/COUNT/MIN/MAX)</td><td>Roll-Up Summary</td></tr>
-          </table>
-          <ul>
-            <li>Roll-Up Summary = its own field type, NOT a formula</li>
-            <li>Roll-Up requires Master-Detail — not available on Lookup</li>
-            <li>Validation Rules use formula syntax but are NOT Formula Fields</li>
-          </ul>
-        </div>
-        <div class="cheat-card">
-          <h3>Approval Process</h3>
-          <ul>
-            <li>Routes records to approvers, locks the record during approval</li>
-            <li>Keyword triggers: "formal approval", "manager sign-off", "record lock"</li>
-            <li>Components: Entry Criteria → Steps → Initial/Approval/Rejection Actions</li>
-            <li>Can update fields, send alerts, create tasks, lock/unlock records</li>
-          </ul>
-          <h4 style="margin-top:.5rem">App Tools Quick Ref</h4>
-          <ul>
-            <li><strong>App Launcher</strong> (⊞ waffle) = end user navigation</li>
-            <li><strong>App Manager</strong> = admin creates/configures apps</li>
-            <li><strong>App Page</strong> = Lightning page built in App Builder</li>
-            <li>Objects → Object Manager | Pages → App Builder | Apps → App Manager</li>
-          </ul>
-        </div>
-        <div class="cheat-card">
-          <h3>Exam Strategy Tips</h3>
-          <ul>
-            <li><strong>Eliminate 2 wrong answers first</strong> — usually 2 are obviously off; you're now 50/50</li>
-            <li>Pick the <strong>most standard / least complex</strong> solution</li>
-            <li>Salesforce favours declarative (Flow) over code (Apex)</li>
-            <li>"Without code" = Flow | "Schedule" = Scheduled Flow | "UI" = Screen Flow</li>
-            <li><strong>Flag and move on</strong> — don't spend more than 90 seconds per question</li>
-            <li>You need <strong>~65%</strong> (40/60 questions) to pass — not perfection</li>
-            <li>Watch for <strong>double negatives</strong> ("which does NOT…")</li>
-          </ul>
-        </div>
-        <div class="cheat-card">
-          <h3>Agentforce Key Concepts</h3>
-          <ul>
-            <li>Agent = <strong>autonomous AI</strong> — not just a chatbot; proactive &amp; self-directed</li>
-            <li>Uses <strong>LLMs + Salesforce CRM data + External data (Data Cloud)</strong></li>
-            <li><strong>Actions</strong> = how it does work: Flow, Apex, APIs, Prompt Templates</li>
-            <li><strong>Guardrails</strong> = safety rules + escalation logic</li>
-            <li><strong>Reasoning Engine</strong> = decides what topic + action to take next</li>
-            <li>Operates <strong>24/7</strong> across CRM, web, Slack, mobile, messaging</li>
-            <li>Can escalate to <strong>human agents</strong> when needed</li>
-          </ul>
-          <h4 style="margin-top:.5rem">5 Agent Components (ROLE-K-A-G-C)</h4>
-          <ol>
-            <li><strong>R</strong>ole — purpose/job</li>
-            <li><strong>K</strong>nowledge — data sources</li>
-            <li><strong>A</strong>ctions — tasks it performs</li>
-            <li><strong>G</strong>uardrails — rules &amp; limits</li>
-            <li><strong>C</strong>hannels — where it operates</li>
-          </ol>
-        </div>
-        <div class="cheat-card">
-          <h3>Agentforce Exam Traps</h3>
-          <ul>
-            <li>Agentforce ≠ traditional chatbot — it is <strong>autonomous &amp; proactive</strong></li>
-            <li>Actions run via <strong>Flow / Apex / API</strong> — not manually by the agent</li>
-            <li>Security is handled by the <strong>Einstein Trust Layer</strong> (data masking, zero retention)</li>
-            <li>Agents can act <strong>proactively</strong> — triggered by data changes, not just user input</li>
-            <li>"What defines what an agent can/cannot do?" → <strong>Guardrails</strong></li>
-            <li>"What identifies the agent's intent?" → <strong>Topic Classification</strong></li>
-            <li>"What makes agents smarter across a conversation?" → <strong>Multi-turn Reasoning Engine</strong></li>
-          </ul>
-        </div>
+
         <div class="cheat-card">
           <h3>Login &amp; Access Control</h3>
           <table class="mini-table">
@@ -1254,10 +1180,9 @@
           </table>
           <ul>
             <li>"Absolutely deny login" → <strong>Profile-based</strong> settings only</li>
-            <li>Admin impersonation: Setup → Login Access Policies → "Admins Can Log in as Any User"</li>
-            <li>Logged in: Setup Audit Trail</li>
           </ul>
         </div>
+
         <div class="cheat-card">
           <h3>SSO vs MFA</h3>
           <table class="mini-table">
@@ -1272,6 +1197,102 @@
             <li>My Domain required for SSO</li>
           </ul>
         </div>
+
+        <div class="cheat-card">
+          <h3>Data Loader vs Data Export</h3>
+          <table class="mini-table">
+            <tr><th>Feature</th><th>Data Loader</th><th>Data Export</th></tr>
+            <tr><td>Import</td><td>✅ Yes</td><td>❌ No</td></tr>
+            <tr><td>Export</td><td>✅ Yes</td><td>✅ Yes</td></tr>
+            <tr><td>Update/Delete</td><td>✅ Yes</td><td>❌ No</td></tr>
+            <tr><td>Backup use</td><td>❌ No</td><td>✅ Yes</td></tr>
+            <tr><td>CLI support</td><td>✅ Yes</td><td>❌ No</td></tr>
+          </table>
+          <ul>
+            <li>Data Loader → change data, bulk operations</li>
+            <li>Data Export → backup / compliance only</li>
+          </ul>
+        </div>
+
+        <div class="cheat-card">
+          <h3>Profiles vs Permission Sets</h3>
+          <ul>
+            <li><strong>Profile</strong> = every user has exactly one; sets baseline access</li>
+            <li><strong>Permission Set</strong> = optional add-on; grants additional access only</li>
+            <li>Permission Sets can <strong>NEVER restrict</strong> below profile level</li>
+            <li><strong>Permission Set Group</strong> = bundle multiple PSets together</li>
+            <li>Muting Permission Set = removes access within a PSGroup only</li>
+          </ul>
+        </div>
+
+        <div class="cheat-card">
+          <h3>Approval Process</h3>
+          <ul>
+            <li>Routes records to approvers, locks the record during approval</li>
+            <li>Keyword triggers: "formal approval", "manager sign-off", "record lock"</li>
+            <li>Components: Entry Criteria → Steps → Initial/Approval/Rejection Actions</li>
+            <li>Can update fields, send alerts, create tasks, lock/unlock records</li>
+          </ul>
+        </div>
+
+        <div class="cheat-card">
+          <h3>Agentforce Key Concepts</h3>
+          <ul>
+            <li>Agent = <strong>autonomous AI</strong> — not just a chatbot; proactive &amp; self-directed</li>
+            <li>Actions = Flow, Apex, APIs, Prompt Templates</li>
+            <li><strong>Guardrails</strong> = what it can/cannot do + escalation logic</li>
+            <li>Inherits <strong>running user's permissions</strong> (OWD/FLS apply)</li>
+          </ul>
+          <h4 style="margin-top:.5rem">5 Agent Components</h4>
+          <ol>
+            <li><strong>R</strong>ole — purpose/job</li>
+            <li><strong>K</strong>nowledge — data sources</li>
+            <li><strong>A</strong>ctions — tasks it performs</li>
+            <li><strong>G</strong>uardrails — rules &amp; limits</li>
+            <li><strong>C</strong>hannels — where it operates</li>
+          </ol>
+        </div>
+
+        <div class="cheat-card">
+          <h3>Agentforce Exam Traps</h3>
+          <ul>
+            <li>Agentforce ≠ traditional chatbot — it is <strong>autonomous &amp; proactive</strong></li>
+            <li>Actions run via <strong>Flow / Apex / API</strong></li>
+            <li><span class="warn">"Testing Preview" does NOT exist</span></li>
+            <li>Trust Layer = data masking only; does NOT control record access</li>
+            <li>"What defines what an agent can/cannot do?" → <strong>Guardrails</strong></li>
+            <li>"What identifies intent?" → <strong>Topic Classification</strong></li>
+          </ul>
+        </div>
+
+        <div class="cheat-card">
+          <h3>Exam Keywords → Likely Answer</h3>
+          <table class="mini-table">
+            <tr><th>Keyword in question</th><th>Think of</th></tr>
+            <tr><td>"roll-up" / "aggregate child"</td><td>Master-Detail relationship</td></tr>
+            <tr><td>"group rows" / "subtotals"</td><td>Summary report</td></tr>
+            <tr><td>"row + column grouping"</td><td>Matrix report</td></tr>
+            <tr><td>"multiple objects, one view"</td><td>Joined report</td></tr>
+            <tr><td>"without writing code"</td><td>Flow</td></tr>
+            <tr><td>"email the customer"</td><td>Auto-Response Rule</td></tr>
+            <tr><td>"email the owner"</td><td>Flow / Alert action</td></tr>
+            <tr><td>"most restrictive"</td><td>OWD</td></tr>
+            <tr><td>"who sees whose data" (vertical)</td><td>Role Hierarchy</td></tr>
+            <tr><td>"who sees whose data" (horizontal)</td><td>Sharing Rules</td></tr>
+            <tr><td>"bulk import / update / delete"</td><td>Data Loader</td></tr>
+            <tr><td>"backup / scheduled export"</td><td>Data Export Service</td></tr>
+            <tr><td>"guide users through record stages"</td><td>Path</td></tr>
+            <tr><td>"train / onboard users in UI"</td><td>In-App Guidance</td></tr>
+            <tr><td>"one login for multiple apps"</td><td>SSO</td></tr>
+            <tr><td>"extra verification / second factor"</td><td>MFA</td></tr>
+            <tr><td>"sum fields on same record" (non-editable)</td><td>Formula Field</td></tr>
+            <tr><td>"aggregate child records" (SUM/COUNT)</td><td>Roll-Up Summary (Master-Detail)</td></tr>
+            <tr><td>"formal approval" / "manager sign-off"</td><td>Approval Process</td></tr>
+            <tr><td>"access to child based on parent"</td><td>Controlled by Parent (OWD)</td></tr>
+            <tr><td>"multiple contacts on a case"</td><td>Case Contact Roles</td></tr>
+          </table>
+        </div>
+
         <div class="cheat-card">
           <h3>Security Layers — Who Controls What</h3>
           <ul>
@@ -1283,6 +1304,20 @@
             <li><span class="warn">Profiles/Permission Sets CANNOT grant access to other users' records</span></li>
           </ul>
         </div>
+
+        <div class="cheat-card">
+          <h3>Exam Strategy Tips</h3>
+          <ul>
+            <li><strong>Eliminate 2 wrong answers first</strong> — usually 2 are obviously off</li>
+            <li>Pick the <strong>most standard / least complex</strong> solution</li>
+            <li>Salesforce favours declarative (Flow) over code (Apex)</li>
+            <li>"Without code" = Flow | "Schedule" = Scheduled Flow | "UI" = Screen Flow</li>
+            <li><strong>Flag and move on</strong> — don't spend more than 90 seconds per question</li>
+            <li>Watch for <strong>double negatives</strong> ("which does NOT…")</li>
+            <li>You need <strong>68%</strong> (≈41/60 questions) to pass</li>
+          </ul>
+        </div>
+
       </div>
     </div>
   </section>
@@ -1398,6 +1433,7 @@
               </div>
             </a>
           </div>
+        </div>
         <div class="resource-category">
           <h3>Official Cert Prep</h3>
           <div class="resource-links">
@@ -1430,7 +1466,6 @@
               </div>
             </a>
           </div>
-        </div>
         </div>
       </div>
     </div>
